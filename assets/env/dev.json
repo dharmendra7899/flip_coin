@@ -1,0 +1,5 @@
+{
+  "base_url": "http://localhost",
+  "api_key": "SOME_API_KEY",
+  "app_name": "Flip Coin"
+}
