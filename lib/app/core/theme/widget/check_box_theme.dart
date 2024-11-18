@@ -10,7 +10,7 @@ var _checkBoxTheme = CheckboxThemeData(
   }),
   checkColor: WidgetStateProperty.resolveWith((states) {
     if (!states.contains(WidgetState.selected)) {
-      return AppPaletteLight.onPrimary;
+      return AppPaletteLight.background;
     }
     return null;
   }),

@@ -1,7 +1,7 @@
-
 class Messages {
   static String get NO_INTERNET => 'No Internet Connection!';
   static String get CHECK_INTERNET => 'Please Check Internet Connection';
+  static String get DOUBLE_TAP => 'Double tap to exist.';
   static String get NETWORK_TIMEOUT => 'Network Timeout.';
   static String get SERVER_NOT_RESPONDING => 'Server not responding.';
   static String get PHONE_REQ => 'Please enter number.';

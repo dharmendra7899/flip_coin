@@ -15,9 +15,9 @@ var _elevatedButtonTheme = ElevatedButtonThemeData(
     textStyle: WidgetStateTextStyle.resolveWith((states) {
       if (states.contains(WidgetState.disabled)) {
         return _textTheme.labelLarge!
-            .copyWith(color: AppPaletteLight.onPrimary);
+            .copyWith(color: AppPaletteLight.background);
       }
-      return _textTheme.labelLarge!.copyWith(color: AppPaletteLight.onPrimary);
+      return _textTheme.labelLarge!.copyWith(color: AppPaletteLight.background);
     }),
     backgroundColor: WidgetStateProperty.resolveWith((states) {
       if (states.contains(WidgetState.disabled)) {

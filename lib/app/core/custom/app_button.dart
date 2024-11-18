@@ -12,19 +12,19 @@ class AppButton extends StatelessWidget {
   final double? radius;
   const AppButton(
       {super.key,
-        required this.onPressed,
-        required this.title,
-        this.color,
-        this.borderColor,
-        this.isLoading = false,
-        this.radius});
+      required this.onPressed,
+      required this.title,
+      this.color,
+      this.borderColor,
+      this.isLoading = false,
+      this.radius});
 
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
       style: ButtonStyle(
         backgroundColor: WidgetStateProperty.resolveWith(
-              (states) {
+          (states) {
             if (states.contains(WidgetState.disabled)) {
               return color ?? AppPaletteLight.primary.withOpacity(0.5);
             }
@@ -46,14 +46,14 @@ class AppButton extends StatelessWidget {
       child: Center(
           child: isLoading == true
               ? const StaggeredDotsWave(
-            color: AppPaletteLight.onPrimary,
-            size: 40,
-          )
+                  color: AppPaletteLight.background,
+                  size: 40,
+                )
               : Text(
-            title,
-            style: context.themeData.textTheme.labelLarge
-                ?.copyWith(color: AppPaletteLight.onPrimary),
-          )),
+                  title,
+                  style: context.themeData.textTheme.labelLarge
+                      ?.copyWith(color: AppPaletteLight.background),
+                )),
     );
   }
 }
@@ -96,3 +96,18 @@ class CommonButton extends StatelessWidget {
     );
   }
 }
+
+List<BoxShadow> boxShadow(
+        {Color color = AppPaletteLight.primary,
+        double spreadRadius = 5,
+        double blurRadius = 30,
+        Offset offset = const Offset(0, 3)}) =>
+    [
+//Color(0xff0000001a).withOpacity(0.05),
+      BoxShadow(
+        color: color.withOpacity(0.02),
+        offset: offset,
+        blurRadius: blurRadius,
+        spreadRadius: spreadRadius,
+      ),
+    ];

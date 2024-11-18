@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'app_palette.dart';
 
 part 'widget/app_bar_theme.dart';
@@ -17,7 +18,7 @@ class AppTheme {
   static final lightThemeMode = ThemeData(
     fontFamily: 'Poppins',
     useMaterial3: true,
-    colorScheme: ColorScheme.fromSeed(seedColor: Colors.black),
+    colorScheme: ColorScheme.fromSeed(seedColor: Colors.white),
     scaffoldBackgroundColor: AppPaletteLight.surface,
     inputDecorationTheme: _inputDecorationTheme,
     textTheme: _textTheme,
@@ -30,7 +31,7 @@ class AppTheme {
     expansionTileTheme: _expansionTileTheme,
     outlinedButtonTheme: OutlinedButtonThemeData(
       style: OutlinedButton.styleFrom(
-        foregroundColor: AppPaletteLight.primary,
+        foregroundColor: AppPaletteLight.primaryContainer,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(8),
           side: const BorderSide(

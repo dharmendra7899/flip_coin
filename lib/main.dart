@@ -1,12 +1,21 @@
 import 'dart:io';
+
 import 'package:flip_coin/app/core/theme/theme.dart';
+import 'package:flip_coin/app/features/auth/auth_provider.dart';
 import 'package:flip_coin/app/features/splash/splash_screen.dart';
+import 'package:flip_coin/custom_providers.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   HttpOverrides.global = MyHttpOverrides();
-  runApp(const MyApp());
+  final state = AuthProvider(await SharedPreferences.getInstance());
+
+  runApp(CustomProvider(
+    loginState: state,
+    child: const MyApp(),
+  ));
 }
 
 class MyHttpOverrides extends HttpOverrides {
