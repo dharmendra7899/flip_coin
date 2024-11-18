@@ -1,11 +1,10 @@
 import 'package:flip_coin/app/core/assets/constant_images.dart';
-import 'package:flip_coin/app/core/custom/text.dart';
 import 'package:flip_coin/app/core/extensions/context_extension.dart';
 import 'package:flip_coin/app/core/theme/app_palette.dart';
+import 'package:flip_coin/app/features/bottom_navigation/bottom_navigation_screen.dart';
 import 'package:flip_coin/app/routes/navigation.dart';
+import 'package:flip_coin/config/strings.dart';
 import 'package:flutter/material.dart';
-
-import '../bottom_navigation/bottom_navigation_screen.dart';
 
 class Walkthrough extends StatefulWidget {
   const Walkthrough({super.key});
@@ -21,23 +20,18 @@ class _WalkthroughState extends State<Walkthrough> {
   List<Map<String, String>> onBoardingData = [
     {
       'image': ConstantImage.appLogo,
-      'title': texts.appName,
-      'description': texts.appName,
+      'title': strings.appName,
+      'description': strings.appName,
     },
     {
       'image': ConstantImage.appLogo,
-      'title': texts.appName,
-      'description': texts.appName,
+      'title': strings.appName,
+      'description': strings.appName,
     },
     {
       'image': ConstantImage.appLogo,
-      'title': texts.appName,
-      'description': texts.appName,
-    },
-    {
-      'image': ConstantImage.appLogo,
-      'title': texts.appName,
-      'description': texts.appName,
+      'title': strings.appName,
+      'description': strings.appName,
     },
   ];
 
@@ -59,8 +53,7 @@ class _WalkthroughState extends State<Walkthrough> {
                 children: [
                   Text(
                     onBoardingData[index]['title']!,
-                    style: context.themeData.textTheme.labelLarge
-                        ?.copyWith(fontSize: 20, fontWeight: FontWeight.w500),
+                    style: context.themeData.textTheme.labelLarge,
                   ),
                   const SizedBox(
                     height: 15,
@@ -73,14 +66,14 @@ class _WalkthroughState extends State<Walkthrough> {
                       )),
                   const SizedBox(height: 40),
                   Padding(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 20.0, vertical: 8),
-                      child: Text(
-                        onBoardingData[index]['description']!,
-                        style: context.themeData.textTheme.labelMedium
-                            ?.copyWith(
-                                fontWeight: FontWeight.w400, fontSize: 16),
-                      )),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 20.0, vertical: 8),
+                    child: Text(
+                      onBoardingData[index]['description']!,
+                      style: context.themeData.textTheme.labelMedium
+                          ?.copyWith(fontWeight: FontWeight.w400),
+                    ),
+                  ),
                   const SizedBox(height: 20),
                 ],
               );

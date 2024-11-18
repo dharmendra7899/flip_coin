@@ -135,7 +135,7 @@ class _AccountScreenState extends State<AccountScreen> {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(8),
         color: Colors.white,
-        border: Border.all(width: 0.4, color: AppPaletteLight.secondary),
+        border: Border.all(width: 0.4, color: AppPaletteLight.gray),
         boxShadow: boxShadow(),
       ),
       child: Column(
