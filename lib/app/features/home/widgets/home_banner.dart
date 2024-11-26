@@ -2,14 +2,15 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flip_coin/app/core/custom/custom_image_view.dart';
 import 'package:flutter/material.dart';
 
-class HomeBanner extends StatefulWidget {
-  const HomeBanner({super.key});
+class CustomBanner extends StatefulWidget {
+  const CustomBanner({super.key,this.height = 180});
+  final double height;
 
   @override
-  State<HomeBanner> createState() => _HomeBannerState();
+  State<CustomBanner> createState() => _CustomBannerState();
 }
 
-class _HomeBannerState extends State<HomeBanner> {
+class _CustomBannerState extends State<CustomBanner> {
   int _currentIndex = 0;
   final List<String> imgList = [
     'https://images.unsplash.com/photo-1520342868574-5fa3804e551c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=6ff92caffcdd63681a35134a6770ed3b&auto=format&fit=crop&w=1951&q=80',
@@ -40,12 +41,12 @@ class _HomeBannerState extends State<HomeBanner> {
       ),
       options: CarouselOptions(
         autoPlay: true,
-        height: 180,
+        height: widget.height,
         enlargeCenterPage: true,
         disableCenter: true,
         initialPage: _currentIndex,
         viewportFraction: 0.93,
-        autoPlayInterval: const Duration(seconds: 7),
+        autoPlayInterval: const Duration(seconds: 5),
         onPageChanged: (index, reason) {
           setCurrentIndex(index, true);
         },

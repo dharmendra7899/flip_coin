@@ -26,6 +26,8 @@ class _CartScreenState extends State<CartScreen> {
 
   @override
   Widget build(BuildContext context) {
+    var height = MediaQuery.of(context).size.height;
+    var width = MediaQuery.of(context).size.width;
     return WillPopScope(
       onWillPop: () async {
         if (widget.isBackButton == true) {
@@ -38,20 +40,35 @@ class _CartScreenState extends State<CartScreen> {
       child: Scaffold(
         appBar: AppBar(
             // toolbarHeight: 0, // Hide default AppBar
-            backgroundColor: AppPaletteLight.primary,
+            backgroundColor: AppPaletteLight.secondaryLight,
             centerTitle: true,
             title: Expanded(
               child: Text(
                 texts.cart,
                 textAlign: TextAlign.center,
                 style: context.themeData.textTheme.labelLarge?.copyWith(
-                  fontSize: 22,
-                  fontWeight: FontWeight.bold,
+                  fontSize: 18,
+                  fontWeight: FontWeight.w600,
                   overflow: TextOverflow.ellipsis,
                   color: AppPaletteLight.background,
                 ),
               ),
             )),
+        body: Container( height: height,
+          width: width,
+          padding: const EdgeInsets.all(8),
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+                colors: [
+                  AppPaletteLight.secondaryLight,
+                  AppPaletteLight.background,
+                  AppPaletteLight.background,
+                  AppPaletteLight.background,
+                ],
+                begin: FractionalOffset.topCenter,
+                end: FractionalOffset.bottomCenter,
+                tileMode: TileMode.repeated),
+          ),),
       ),
     );
   }

@@ -39,7 +39,7 @@ class _HomeScreenState extends State<HomeScreen> {
       child: Scaffold(
           appBar: AppBar(
             elevation: 0,
-            backgroundColor: AppPaletteLight.primary,
+            backgroundColor: AppPaletteLight.secondaryLight,
             title: Row(
               children: [
                 Container(
@@ -57,15 +57,37 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
                 const SizedBox(width: 10),
-                Expanded(
-                  child: Text(
-                    '560102 - New home ',
-                    maxLines: 2,
-                    style: context.themeData.textTheme.labelLarge?.copyWith(
-                        color: AppPaletteLight.background,
-                        fontWeight: FontWeight.w500,
-                        fontSize: 16),
-                  ),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "New home ",
+                          style: context.themeData.textTheme.labelLarge
+                              ?.copyWith(
+                                  color: AppPaletteLight.background,
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 18),
+                        ),
+                        Text(
+                          '560102 ',
+                          maxLines: 2,
+                          style: context.themeData.textTheme.labelLarge
+                              ?.copyWith(
+                                  color: AppPaletteLight.background,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 12),
+                        ),
+                      ],
+                    ),
+                    const Icon(
+                      Icons.keyboard_arrow_down,
+                      size: 25,
+                      color: AppPaletteLight.background,
+                    )
+                  ],
                 )
               ],
             ),
@@ -89,24 +111,81 @@ class _HomeScreenState extends State<HomeScreen> {
           body: Container(
             height: height,
             width: width,
-            padding: const EdgeInsets.all(12),
+            padding: const EdgeInsets.all(8),
             decoration: const BoxDecoration(
               gradient: LinearGradient(
                   colors: [
-                    AppPaletteLight.primary,
-                    AppPaletteLight.secondaryDark,
-                    AppPaletteLight.secondary,
+                    AppPaletteLight.secondaryLight,
+                    AppPaletteLight.background,
+                    AppPaletteLight.background,
                     AppPaletteLight.background,
                   ],
                   begin: FractionalOffset.topCenter,
                   end: FractionalOffset.bottomCenter,
                   tileMode: TileMode.repeated),
             ),
-            child: const SingleChildScrollView(
+            child: SingleChildScrollView(
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  HomeBanner(),
-                  CategoryWidget()
+                  Container(
+                    height: 50,
+                    width: width,
+                    alignment: Alignment.centerLeft,
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 15, vertical: 12),
+                    margin: const EdgeInsets.only(left: 4, right: 4),
+                    decoration: BoxDecoration(
+                        border: Border.all(color: Colors.grey.withOpacity(0.5)),
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(12)),
+                    child: Row(
+                      children: [
+                        Icon(
+                          Icons.search,
+                          size: 25,
+                          color: Theme.of(context).primaryColor,
+                        ),
+                        const SizedBox(width: 15),
+                        Text(
+                          'Search Everything Locally...',
+                          style:
+                              TextStyle(color: Colors.black.withOpacity(0.5)),
+                        ),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 14,
+                  ),
+                  const CustomBanner(),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  const CategoryWidget(),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                   ProductList(sectionTitle: 'Welcome Offer',),
+                  const SizedBox(
+                    height: 8,
+                  ),
+                  CustomBanner(height: 80,),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  ProductList(sectionTitle: 'Monthly Big Saver',),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  ProductList(sectionTitle: 'New Picks For You',),
+                  const SizedBox(
+                    height: 8,
+                  ),
+                  CustomBanner(height: 120,),
+                  const SizedBox(
+                    height: 80,
+                  ),
                 ],
               ),
             ),

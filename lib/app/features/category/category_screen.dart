@@ -48,6 +48,8 @@ class _CategoryScreenState extends State<CategoryScreen> {
 
   @override
   Widget build(BuildContext context) {
+    var height = MediaQuery.of(context).size.height;
+    var width = MediaQuery.of(context).size.width;
     return WillPopScope(
       onWillPop: () async {
         if (widget.isBackButton == true) {
@@ -58,38 +60,48 @@ class _CategoryScreenState extends State<CategoryScreen> {
         return false;
       },
       child: Scaffold(
+
         appBar: AppBar(
-          // toolbarHeight: 0, // Hide default AppBar
-          backgroundColor: AppPaletteLight.primary,
-          title: Expanded(
-            child: Text(
-              texts.allCategories,
-              textAlign: TextAlign.center,
-              style: context.themeData.textTheme.labelLarge?.copyWith(
-                fontSize: 22,
-                fontWeight: FontWeight.bold,
-                overflow: TextOverflow.ellipsis,
-                color: AppPaletteLight.background,
-              ),
+          elevation: 0,
+          backgroundColor: AppPaletteLight.secondaryLight,
+          title: Text(
+            texts.allCategories,
+            textAlign: TextAlign.center,
+            style: context.themeData.textTheme.labelLarge?.copyWith(
+              fontSize: 18,
+              fontWeight: FontWeight.w600,
+              overflow: TextOverflow.ellipsis,
+              color: AppPaletteLight.background,
             ),
           ),
           actions: [
-            IconButton(
-              onPressed: () {
-                // Add search functionality
-              },
-              icon: const Icon(
-                Icons.search,
-                color: AppPaletteLight.background,
-                size: 30,
-              ),
+            Icon(
+              Icons.search,
+              color: AppPaletteLight.background,
+              size: 30,
             ),
             const SizedBox(
               width: 10,
             ),
           ],
         ),
-        body: categoryList(),
+        body: Container(
+            height: height,
+            width: width,
+            decoration: const BoxDecoration(
+              gradient: LinearGradient(
+                  colors: [
+                    AppPaletteLight.secondaryLight,
+                    AppPaletteLight.background,
+                    AppPaletteLight.background,
+                    AppPaletteLight.background,
+
+                  ],
+                  begin: FractionalOffset.topCenter,
+                  end: FractionalOffset.bottomCenter,
+                  tileMode: TileMode.repeated),
+            ),
+            child: categoryList()),
       ),
     );
   }
