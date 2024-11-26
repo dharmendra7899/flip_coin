@@ -11,7 +11,6 @@ class CategoryWidget extends StatefulWidget {
 }
 
 class _CategoryWidgetState extends State<CategoryWidget> {
-
   final List<String> imageUrls = [
     ConstantImage.chicken,
     ConstantImage.mutton,
@@ -36,20 +35,13 @@ class _CategoryWidgetState extends State<CategoryWidget> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'Categories',
+            'Find stores by Category',
             textAlign: TextAlign.center,
-            style: context.themeData.textTheme.labelMedium
-                ?.copyWith(fontSize: 20, overflow: TextOverflow.ellipsis),
-          ),
-          Text(
-            'Reccomened for you',
-            textAlign: TextAlign.center,
-            maxLines: 1,
-            style: context.themeData.textTheme.labelSmall?.copyWith(
-                fontSize: 14,
-                fontWeight: FontWeight.w500,
-                color: AppPaletteLight.gray,
-                overflow: TextOverflow.ellipsis),
+            style: context.themeData.textTheme.labelMedium?.copyWith(
+              fontSize: 20,
+              overflow: TextOverflow.ellipsis,
+              color: AppPaletteLight.gray,
+            ),
           ),
           const SizedBox(height: 16),
           Center(
@@ -60,7 +52,7 @@ class _CategoryWidgetState extends State<CategoryWidget> {
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),
                 crossAxisCount: 2,
-                childAspectRatio: 1.1,
+                childAspectRatio: 1.7,
                 children: [
                   _buildCategoryItem('Noodles', ConstantImage.noodle),
                   _buildCategoryItem('Coffee', ConstantImage.coffee),
@@ -83,14 +75,16 @@ class _CategoryWidgetState extends State<CategoryWidget> {
     return Column(
       children: [
         Container(
-          height: 70,
-          width: 70,
+          height: 100,
+          width: 100,
           alignment: Alignment.center,
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(8),
+            borderRadius: BorderRadius.circular(12),
+            border: Border.all(color: AppPaletteLight.gray, width: 0.7),
             color: Colors.red.shade50,
           ),
-          child: Center(
+          child: ClipRRect(
+              borderRadius: BorderRadius.circular(12),
               child: Image.asset(
                 asset,
                 height: 70,

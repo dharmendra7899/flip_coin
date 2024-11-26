@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 class AppPaletteLight {
   static const primary = Color(0xFF3C8231);
+  static const secondaryDark = Color(0xFF299F13);
   static const secondary = Color(0xFF84BD56);
   static const background = Color(0xFFFFFFFF);
 
