@@ -1,7 +1,7 @@
 import 'package:flip_coin/app/core/assets/constant_images.dart';
 import 'package:flip_coin/app/core/extensions/context_extension.dart';
 import 'package:flip_coin/app/core/theme/app_palette.dart';
-import 'package:flip_coin/app/features/bottom_navigation/bottom_navigation_screen.dart';
+import 'package:flip_coin/app/features/bottom_navigation/dashboard.dart';
 import 'package:flip_coin/app/routes/navigation.dart';
 import 'package:flip_coin/config/strings.dart';
 import 'package:flutter/material.dart';
@@ -109,7 +109,7 @@ class _WalkthroughState extends State<Walkthrough> {
                       if (context.mounted) {
                         navigateRemoveUntil(
                             context: context,
-                            to: const BottomNavigationScreen());
+                            to: const Dashboard());
                       }
                     }
                   },

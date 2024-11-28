@@ -1,6 +1,6 @@
 class ConstantImage {
   static const String appLogo = 'assets/images/logo.png';
-  static const String placeHolder = 'assets/images/logo.png';
+  static const String placeHolder = 'assets/images/placeholder.png';
   static const String profile = 'assets/images/profilePlaceholder.png';
   static const String cart = 'assets/images/cart.png';
   static const String home = 'assets/images/home.png';

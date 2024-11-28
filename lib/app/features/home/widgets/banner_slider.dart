@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 
 class BannerSlider extends StatelessWidget {
+  const BannerSlider({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: 200,
       child: PageView(
         children: [

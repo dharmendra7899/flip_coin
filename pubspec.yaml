@@ -21,7 +21,8 @@ dependencies:
   dio: ^5.7.0
   provider: ^6.1.2
   staggered_grid_view_flutter: ^0.0.4
-  carousel_slider: ^5.0.0
+  lottie: ^3.0.0
+  flutter_svg: ^2.0.16
 
 dev_dependencies:
   flutter_test:
@@ -38,6 +39,8 @@ flutter:
     - assets/env/
     - assets/images/
     - assets/fonts/
+    - assets/svg/
+    - assets/animation/
 
 
   fonts:

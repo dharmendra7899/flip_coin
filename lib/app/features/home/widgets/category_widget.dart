@@ -1,5 +1,4 @@
 import 'package:flip_coin/app/core/assets/constant_images.dart';
-import 'package:flip_coin/app/core/custom/fixed_gridview_height.dart';
 import 'package:flip_coin/app/core/extensions/context_extension.dart';
 import 'package:flip_coin/app/core/theme/app_palette.dart';
 import 'package:flutter/material.dart';
@@ -30,34 +29,37 @@ class _CategoryWidgetState extends State<CategoryWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-     /*   Text(
-          'Find stores by Category',
-          textAlign: TextAlign.center,
-          style: context.themeData.textTheme.labelMedium?.copyWith(
-            fontSize: 20,
-            overflow: TextOverflow.ellipsis,
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+       /*   Text(
+            'Find stores by Category',
+            textAlign: TextAlign.center,
+            style: context.themeData.textTheme.labelMedium?.copyWith(
+              fontSize: 20,
+              overflow: TextOverflow.ellipsis,
+            ),
+          ),*/
+          const SizedBox(height: 12),
+          Center(
+            child: SizedBox(
+                height: 150,
+                child: ListView.builder(
+                  itemCount: imageUrls.length,
+                  scrollDirection: Axis.horizontal,
+                  shrinkWrap: true,
+                  itemBuilder: (BuildContext context, int index) {
+                    return Padding(
+                      padding: const EdgeInsets.only(right: 12.0),
+                      child: _buildCategoryItem("Biryani",imageUrls[index]),
+                    );
+                  },
+                )),
           ),
-        ),*/
-        const SizedBox(height: 12),
-        Center(
-          child: SizedBox(
-              height: 150,
-              child: ListView.builder(
-                itemCount: imageUrls.length,
-                scrollDirection: Axis.horizontal,
-                shrinkWrap: true,
-                itemBuilder: (BuildContext context, int index) {
-                  return Padding(
-                    padding: const EdgeInsets.only(right: 12.0),
-                    child: _buildCategoryItem("Biryani",imageUrls[index]),
-                  );
-                },
-              )),
-        ),
-      ],
+        ],
+      ),
     );
   }
 

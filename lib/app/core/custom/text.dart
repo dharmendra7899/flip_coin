@@ -34,6 +34,8 @@ class Texts {
   String get con => 'Continue';
   String get update => 'Update';
 
+  String get noItem => 'No Item Found..!!';
+
   String get register => 'Register';
   String get google => 'Sign in with Google';
   String get apple => 'Sign in with Apple';
@@ -69,6 +71,8 @@ class Texts {
   String get orders => 'My Orders';
   String get help => 'Help & Support';
   String get notification => 'Notification';
+  String get search => 'Search items here';
+  String get noCategory => 'No Category Available..!!';
 }
 
 final texts = Texts();

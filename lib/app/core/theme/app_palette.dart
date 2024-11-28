@@ -7,7 +7,12 @@ class AppPaletteLight {
   static const secondaryLight = Color(0xFFA2DC7D);
   static const background = Color(0xFFFFFFFF);
 
+  static const grad1Color = Color(0xfff12842);
+  static const grad2Color = Color(0xffF70426);
+
   static const black = Color(0xFF000000);
+  static const lightBlack = Color(0xff52575C);
+  static const textColor = Color(0xff222222);
   static const redColor = Color(0xFFB03334);
   static const gray = Color(0xFFDADADA);
 

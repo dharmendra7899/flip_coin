@@ -5,7 +5,7 @@ import 'package:flip_coin/app/core/custom/validate_connectivity.dart';
 import 'package:flip_coin/app/core/custom_providers/internet_provider.dart';
 import 'package:flip_coin/app/core/theme/app_palette.dart';
 import 'package:flip_coin/app/features/account/account_screen.dart';
-import 'package:flip_coin/app/features/bottom_navigation/bottom_navigation_provider.dart';
+import 'package:flip_coin/app/features/bottom_navigation/provider/bottom_navigation_provider.dart';
 import 'package:flip_coin/app/features/cart/cart_screen.dart';
 import 'package:flip_coin/app/features/category/category_screen.dart';
 import 'package:flip_coin/app/features/home/home_screen.dart';
@@ -14,7 +14,6 @@ import 'package:provider/provider.dart';
 
 class BottomNavigationScreen extends StatefulWidget {
   const BottomNavigationScreen({super.key});
-
   @override
   State<BottomNavigationScreen> createState() => _BottomNavigationScreenState();
 }
@@ -26,10 +25,10 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
   void initState() {
     super.initState();
     screens = [
-      HomeScreen(),
-      CategoryScreen(isBackButton: false),
-      CartScreen(isBackButton: false),
-      AccountScreen(isBackButton: false),
+      const HomeScreen(),
+      const CategoryScreen(isBackButton: false),
+      const CartScreen(isBackButton: false),
+      const AccountScreen(isBackButton: false),
     ];
   }
 

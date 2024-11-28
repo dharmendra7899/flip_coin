@@ -2,7 +2,7 @@ import 'package:flip_coin/app/core/assets/constant_images.dart';
 import 'package:flip_coin/app/core/custom/text.dart';
 import 'package:flip_coin/app/core/extensions/context_extension.dart';
 import 'package:flip_coin/app/core/theme/app_palette.dart';
-import 'package:flip_coin/app/features/bottom_navigation/bottom_navigation_provider.dart';
+import 'package:flip_coin/app/features/bottom_navigation/provider/bottom_navigation_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:staggered_grid_view_flutter/widgets/staggered_grid_view.dart';
@@ -74,13 +74,13 @@ class _CategoryScreenState extends State<CategoryScreen> {
               color: AppPaletteLight.background,
             ),
           ),
-          actions: [
+          actions: const [
             Icon(
               Icons.search,
               color: AppPaletteLight.background,
               size: 30,
             ),
-            const SizedBox(
+            SizedBox(
               width: 10,
             ),
           ],

@@ -8,47 +8,50 @@ import '../../../core/theme/app_palette.dart';
 class ProductList extends StatelessWidget {
   final String sectionTitle;
 
-  ProductList({required this.sectionTitle});
+  const ProductList({super.key, required this.sectionTitle});
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text(
-              sectionTitle,
-              style: context.themeData.textTheme.bodyMedium?.copyWith(
-                  fontSize: 18,
-                  fontWeight: FontWeight.w600,
-                  overflow: TextOverflow.ellipsis),
-            ),
-            Text(
-              texts.seeAll,
-              style: context.themeData.textTheme.bodyMedium?.copyWith(
-                fontSize: 16,
-                fontWeight: FontWeight.w500,
-                color: AppPaletteLight.primary,
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                sectionTitle,
+                style: context.themeData.textTheme.bodyMedium?.copyWith(
+                    fontSize: 18,
+                    fontWeight: FontWeight.w600,
+                    overflow: TextOverflow.ellipsis),
               ),
-            ),
-          ],
-        ),
-        const SizedBox(
-          height: 10,
-        ),
-        SizedBox(
-          height: 220,
-          child: ListView.builder(
-            scrollDirection: Axis.horizontal,
-            itemCount: 10,
-            itemBuilder: (context, index) {
-              return _buildCategoryItem(context);
-            },
+              Text(
+                texts.seeAll,
+                style: context.themeData.textTheme.bodyMedium?.copyWith(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w500,
+                  color: AppPaletteLight.primary,
+                ),
+              ),
+            ],
           ),
-        ),
-      ],
+          const SizedBox(
+            height: 10,
+          ),
+          SizedBox(
+            height: 220,
+            child: ListView.builder(
+              scrollDirection: Axis.horizontal,
+              itemCount: 10,
+              itemBuilder: (context, index) {
+                return _buildCategoryItem(context);
+              },
+            ),
+          ),
+        ],
+      ),
     );
   }
 
@@ -142,7 +145,7 @@ class ProductList extends StatelessWidget {
                     ),
                     Container(
                         padding:
-                            EdgeInsets.symmetric(horizontal: 16, vertical: 5),
+                            const EdgeInsets.symmetric(horizontal: 16, vertical: 5),
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(12),
                             color: AppPaletteLight.primary),
