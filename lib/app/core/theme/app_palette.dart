@@ -4,7 +4,7 @@ class AppPaletteLight {
   static const primary = Color(0xFF3C8231);
   static const secondary = Color(0xFF84BD56);
   static const secondary1 = Color(0xFF97DF65);
-  static const secondaryLight = Color(0xFFA2DC7D);
+  static const secondaryLight = Color(0xFFF8FFF3);
   static const background = Color(0xFFFFFFFF);
 
   static const grad1Color = Color(0xfff12842);
@@ -21,6 +21,7 @@ class AppPaletteLight {
   static const onPrimaryContainer = Color(0xFFFFFFFF);
   static const gradient1 = Color(0xFFFCF2C3);
   static const gradient2 = Color(0xFFF3CD5C);
+  static const blueColor = Color(0xE80771FF);
 
   // Tertiary Color
   static const onTertiary = Color(0xFFFFFFFF);

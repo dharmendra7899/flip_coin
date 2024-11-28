@@ -9,10 +9,9 @@ import 'package:flip_coin/app/core/helper_function/helper_function.dart';
 import 'package:flip_coin/app/core/theme/app_palette.dart';
 import 'package:flip_coin/app/features/account/account_screen.dart';
 import 'package:flip_coin/app/features/bottom_navigation/provider/bottom_navigation_provider.dart';
-import 'package:flip_coin/app/features/cart/cart_screen.dart';
-import 'package:flip_coin/app/features/category/all_categories.dart';
-import 'package:flip_coin/app/features/category/category_screen.dart';
-import 'package:flip_coin/app/features/home/home_screen.dart';
+import 'package:flip_coin/app/features/cart/presentation/cart_screen.dart';
+import 'package:flip_coin/app/features/category/presentation/category_screen.dart';
+import 'package:flip_coin/app/features/home/presentation/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
@@ -113,17 +112,17 @@ class DashboardPageState extends State<Dashboard>
           showMessage: false,
         );
         return Scaffold(
-         extendBodyBehindAppBar: false,
+          extendBodyBehindAppBar: false,
           extendBody: true,
           backgroundColor: AppPaletteLight.background,
-          appBar: selBottom == 0
+          appBar: selBottom == 0||selBottom == 1||selBottom == 3
               ? _getAppBar()
               : AppBar(
-            systemOverlayStyle: const SystemUiOverlayStyle(
-              statusBarColor: Colors.transparent,
-              statusBarIconBrightness: Brightness.dark,
-              statusBarBrightness: Brightness.light,
-            ),
+                  systemOverlayStyle: const SystemUiOverlayStyle(
+                    statusBarColor: Colors.transparent,
+                    statusBarIconBrightness: Brightness.dark,
+                    statusBarBrightness: Brightness.light,
+                  ),
                   toolbarHeight: 0,
                   elevation: 0,
                   backgroundColor: AppPaletteLight.background,
@@ -133,8 +132,8 @@ class DashboardPageState extends State<Dashboard>
               controller: _tabController,
               children: const [
                 HomeScreen(),
-               // CategoryScreen(isBackButton: false),
-                AllCategories(),
+                CategoryScreen(isBackButton: false),
+                // AllCategories(),
                 CartScreen(isBackButton: false),
                 AccountScreen(isBackButton: false),
               ],
@@ -157,13 +156,12 @@ class DashboardPageState extends State<Dashboard>
       toolbarHeight: 60,
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(
-          bottom:
-              Radius.circular(20), // Radius for bottom left and right corners
+          bottom: Radius.circular(12), // Radius for bottom left and right corners
         ),
       ),
       centerTitle: false,
       automaticallyImplyLeading: false,
-      backgroundColor: AppPaletteLight.background,
+      backgroundColor: AppPaletteLight.secondaryLight,
       title: Row(
         children: [
           Container(
@@ -213,22 +211,21 @@ class DashboardPageState extends State<Dashboard>
           )
         ],
       ),
-      // title: SvgPicture.asset(
-      //   DesignConfiguration.setSvgPath('titleicon_dark'),
-      //   height: 40,
-      // ),
+
 
       actions: [
         IconButton(
           icon: const Icon(
-            Icons.notifications_none,
+            Icons.favorite_border,
+            size: 25,
             color: AppPaletteLight.lightBlack,
           ),
           onPressed: () {},
         ),
         IconButton(
           icon: const Icon(
-            Icons.shopping_cart_outlined,
+            size: 25,
+            Icons.notifications_none,
             color: AppPaletteLight.lightBlack,
           ),
           onPressed: () {},

@@ -9,7 +9,7 @@ class AuthProvider extends ChangeNotifier {
   bool get showLoader => _showLoader;
 
   bool? _token = false;
-  String? _phoneNumber = "";
+  final String _phoneNumber = "";
 
   bool? get token => _token;
 

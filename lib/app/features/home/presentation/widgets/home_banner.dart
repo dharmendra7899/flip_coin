@@ -1,12 +1,9 @@
-
 import 'package:flip_coin/app/core/custom/custom_image_view.dart';
 import 'package:flip_coin/app/core/theme/app_palette.dart';
 import 'package:flip_coin/app/features/bottom_navigation/provider/bottom_navigation_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shimmer/shimmer.dart';
-
-
 
 class CustomSlider extends StatefulWidget {
   const CustomSlider({super.key, this.height = 180});

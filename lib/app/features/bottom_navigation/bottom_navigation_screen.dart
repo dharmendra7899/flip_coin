@@ -6,9 +6,9 @@ import 'package:flip_coin/app/core/custom_providers/internet_provider.dart';
 import 'package:flip_coin/app/core/theme/app_palette.dart';
 import 'package:flip_coin/app/features/account/account_screen.dart';
 import 'package:flip_coin/app/features/bottom_navigation/provider/bottom_navigation_provider.dart';
-import 'package:flip_coin/app/features/cart/cart_screen.dart';
-import 'package:flip_coin/app/features/category/category_screen.dart';
-import 'package:flip_coin/app/features/home/home_screen.dart';
+import 'package:flip_coin/app/features/cart/presentation/cart_screen.dart';
+import 'package:flip_coin/app/features/category/presentation/category_screen.dart';
+import 'package:flip_coin/app/features/home/presentation/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

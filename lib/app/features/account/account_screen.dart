@@ -27,6 +27,7 @@ class _AccountScreenState extends State<AccountScreen> {
   }
 
   final List<Map<String, String>> accountList = [
+    {"name": texts.address},
     {"name": texts.orders},
     {"name": texts.help},
     {"name": texts.notification},
@@ -50,96 +51,77 @@ class _AccountScreenState extends State<AccountScreen> {
             .onTapped(0);
         return false;
       },
-      child: Scaffold(
-        appBar: AppBar(
-          // toolbarHeight: 0, // Hide default AppBar
-          backgroundColor: AppPaletteLight.secondaryLight,
-          centerTitle: true,
-          title: Expanded(
-            child: Text(
-              texts.account,
-              textAlign: TextAlign.center,
-              style: context.themeData.textTheme.labelLarge?.copyWith(
-                fontSize: 18,
-                fontWeight: FontWeight.w600,
-                overflow: TextOverflow.ellipsis,
-                color: AppPaletteLight.background,
-              ),
-            ),
-          ),
+      child: Container( height: height,
+        width: width,
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+              colors: [
+                AppPaletteLight.secondaryLight,
+                AppPaletteLight.background,
+                AppPaletteLight.background,
+                AppPaletteLight.background,
+              ],
+              begin: FractionalOffset.topCenter,
+              end: FractionalOffset.bottomCenter,
+              tileMode: TileMode.repeated),
         ),
-        body: Container( height: height,
-          width: width,
-          decoration: const BoxDecoration(
-            gradient: LinearGradient(
-                colors: [
-                  AppPaletteLight.secondaryLight,
-                  AppPaletteLight.background,
-                  AppPaletteLight.background,
-                  AppPaletteLight.background,
-                ],
-                begin: FractionalOffset.topCenter,
-                end: FractionalOffset.bottomCenter,
-                tileMode: TileMode.repeated),
-          ),
-          child: Padding(
-            padding: const EdgeInsets.all(12.0),
-            child: Column(
-              children: [
-                _profileContainer(),
-                const SizedBox(
-                  height: 20,
-                ),
-                ListView.separated(
-                  padding: EdgeInsets.zero,
-                  physics: const NeverScrollableScrollPhysics(),
-                  shrinkWrap: true,
-                  itemCount: accountList.length,
-                  separatorBuilder: (context, index) {
-                    return const Divider(
-                      color: AppPaletteLight.onSurfaceVariant,
-                      height: 1,
-                      thickness: 0.7,
-                    );
-                  },
-                  itemBuilder: (BuildContext context, int index) {
-                    return InkWell(
-                      onTap: () {},
-                      child: SizedBox(
-                        height: 50,
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                          child: Row(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                accountList[index]['name'] ?? '',
-                                style: context.themeData.textTheme.labelLarge
-                                    ?.copyWith(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w500,
-                                ),
+        child: Padding(
+          padding: const EdgeInsets.all(12.0),
+          child: Column(
+            children: [
+              _profileContainer(),
+              const SizedBox(
+                height: 20,
+              ),
+              ListView.separated(
+                padding: EdgeInsets.zero,
+                physics: const NeverScrollableScrollPhysics(),
+                shrinkWrap: true,
+                itemCount: accountList.length,
+                separatorBuilder: (context, index) {
+                  return const Divider(
+                    color: AppPaletteLight.onSurfaceVariant,
+                    height: 1,
+                    thickness: 0.7,
+                  );
+                },
+                itemBuilder: (BuildContext context, int index) {
+                  return InkWell(
+                    onTap: () {},
+                    child: SizedBox(
+                      height: 50,
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              accountList[index]['name'] ?? '',
+                              style: context.themeData.textTheme.labelLarge
+                                  ?.copyWith(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w500,
                               ),
-                              const Icon(
-                                Icons.arrow_forward_ios,
-                                size: 15,
-                                color: AppPaletteLight.black,
-                              ),
-                            ],
-                          ),
+                            ),
+                            const Icon(
+                              Icons.arrow_forward_ios,
+                              size: 15,
+                              color: AppPaletteLight.black,
+                            ),
+                          ],
                         ),
                       ),
-                    );
-                  },
-                ),
-                const Divider(
-                  color: AppPaletteLight.onSurfaceVariant,
-                  height: 1,
-                  thickness: 0.7,
-                )
-              ],
-            ),
+                    ),
+                  );
+                },
+              ),
+              const Divider(
+                color: AppPaletteLight.onSurfaceVariant,
+                height: 1,
+                thickness: 0.7,
+              )
+            ],
           ),
         ),
       ),
@@ -170,7 +152,7 @@ class _AccountScreenState extends State<AccountScreen> {
                 ),
                 child: ClipRRect(
                     borderRadius: BorderRadius.circular(40),
-                    child: Image.asset(ConstantImage.appLogo)),
+                    child: Image.asset(ConstantImage.profile)),
               ),
               const SizedBox(width: 20),
               Expanded(

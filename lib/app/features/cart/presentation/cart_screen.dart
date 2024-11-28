@@ -38,23 +38,27 @@ class _CartScreenState extends State<CartScreen> {
         return false;
       },
       child: Scaffold(
-        appBar: AppBar(
-            // toolbarHeight: 0, // Hide default AppBar
-            backgroundColor: AppPaletteLight.secondaryLight,
-            centerTitle: true,
-            title: Expanded(
-              child: Text(
-                texts.cart,
-                textAlign: TextAlign.center,
-                style: context.themeData.textTheme.labelLarge?.copyWith(
-                  fontSize: 18,
-                  fontWeight: FontWeight.w600,
-                  overflow: TextOverflow.ellipsis,
-                  color: AppPaletteLight.background,
-                ),
-              ),
-            )),
-        body: Container( height: height,
+        extendBodyBehindAppBar: false,
+        extendBody: true,
+        appBar: AppBar(elevation: 0,
+          backgroundColor: AppPaletteLight.secondaryLight,
+          leading: const Icon(
+            size: 25,
+            Icons.shopping_cart_outlined,
+            color: AppPaletteLight.lightBlack,
+          ),
+          centerTitle: false,
+          titleSpacing: 0,
+          title: Text(
+            texts.cart,
+            style: context.themeData.textTheme.labelLarge?.copyWith(
+                color: AppPaletteLight.textColor,
+                fontWeight: FontWeight.w600,
+                fontSize: 18),
+          ),
+        ),
+        body: Container(
+          height: height,
           width: width,
           padding: const EdgeInsets.all(8),
           decoration: const BoxDecoration(
@@ -68,7 +72,8 @@ class _CartScreenState extends State<CartScreen> {
                 begin: FractionalOffset.topCenter,
                 end: FractionalOffset.bottomCenter,
                 tileMode: TileMode.repeated),
-          ),),
+          ),
+        ),
       ),
     );
   }
