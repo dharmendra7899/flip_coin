@@ -130,6 +130,16 @@ class Texts {
   String get cancel => 'Cancellable Till';
   String get returnable => 'No Returnable';
   String get viewAll => 'View All';
+  String get sort => 'Sort';
+  String get filter => 'Filter';
+  String get brand => 'Brands';
+  String get relevance => 'Relevance (default)';
+  String get priceLow => 'Price (low to high)';
+  String get priceHigh => 'Price (hign to low)';
+  String get discount => 'Discount (high to low)';
+  String get range => 'Price Range';
+  String get apply => 'Apply';
+  String get clear => 'Clear';
 }
 
 final texts = Texts();

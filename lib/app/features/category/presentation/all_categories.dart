@@ -3,7 +3,10 @@ import 'package:flip_coin/app/core/custom/text.dart';
 import 'package:flip_coin/app/core/extensions/context_extension.dart';
 import 'package:flip_coin/app/core/helper_function/helper_function.dart';
 import 'package:flip_coin/app/core/theme/app_palette.dart';
+import 'package:flip_coin/app/features/category/presentation/widget/brand_filter.dart';
 import 'package:flip_coin/app/features/category/presentation/widget/category_prodcuts.dart';
+import 'package:flip_coin/app/features/category/presentation/widget/filter_dialog.dart';
+import 'package:flip_coin/app/features/category/presentation/widget/sort_dialog.dart';
 import 'package:flip_coin/app/features/category/provider/category_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -41,6 +44,8 @@ class _AllCategoriesState extends State<AllCategories>
     ConstantImage.egg,
     ConstantImage.download,
   ];
+
+
 
   @override
   void initState() {
@@ -228,144 +233,158 @@ class _AllCategoriesState extends State<AllCategories>
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
-                                  Container(
-                                    alignment: Alignment.center,
-                                    decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(6),
-                                        border: Border.all(
-                                            width: 0.5,
-                                            color: AppPaletteLight.lightBlack)),
-                                    child: Padding(
-                                      padding: const EdgeInsets.symmetric(
-                                          vertical: 5.0, horizontal: 12),
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.center,
-                                        children: [
-                                          SvgPicture.asset(
-                                              DesignConfiguration.setSvgPath(
-                                                  'filter'),
-                                              colorFilter:
-                                                  const ColorFilter.mode(
-                                                      AppPaletteLight
-                                                          .lightBlack,
-                                                      BlendMode.srcIn)),
-                                          const SizedBox(
-                                            width: 5,
-                                          ),
-                                          Text(
-                                            'Filter',
-                                            style: Theme.of(context)
-                                                .textTheme
-                                                .bodyLarge!
-                                                .copyWith(
-                                                    fontSize: 14,
-                                                    fontWeight:
-                                                        FontWeight.w400),
-                                          ),
-                                          const Icon(
-                                            Icons.arrow_drop_down,
-                                            color: AppPaletteLight.lightBlack,
-                                          )
-                                        ],
+                                  GestureDetector(
+                                    onTap: () => showFilterBottomSheet(context),
+                                    child: Container(
+                                      alignment: Alignment.center,
+                                      decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(6),
+                                          border: Border.all(
+                                              width: 0.5,
+                                              color:
+                                                  AppPaletteLight.lightBlack)),
+                                      child: Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                            vertical: 5.0, horizontal: 12),
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.center,
+                                          children: [
+                                            SvgPicture.asset(
+                                                DesignConfiguration.setSvgPath(
+                                                    'filter'),
+                                                colorFilter:
+                                                    const ColorFilter.mode(
+                                                        AppPaletteLight
+                                                            .lightBlack,
+                                                        BlendMode.srcIn)),
+                                            const SizedBox(
+                                              width: 5,
+                                            ),
+                                            Text(
+                                              texts.filter,
+                                              style: Theme.of(context)
+                                                  .textTheme
+                                                  .bodyLarge!
+                                                  .copyWith(
+                                                      fontSize: 14,
+                                                      fontWeight:
+                                                          FontWeight.w400),
+                                            ),
+                                            const Icon(
+                                              Icons.arrow_drop_down,
+                                              color: AppPaletteLight.lightBlack,
+                                            )
+                                          ],
+                                        ),
                                       ),
                                     ),
                                   ),
                                   const SizedBox(
                                     width: 12,
                                   ),
-                                  Container(
-                                    alignment: Alignment.center,
-                                    decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(6),
-                                        border: Border.all(
-                                            width: 0.5,
-                                            color: AppPaletteLight.lightBlack)),
-                                    child: Padding(
-                                      padding: const EdgeInsets.symmetric(
-                                          vertical: 5.0, horizontal: 12),
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.center,
-                                        children: [
-                                          SvgPicture.asset(
-                                              DesignConfiguration.setSvgPath(
-                                                  'sortby'),
-                                              colorFilter:
-                                                  const ColorFilter.mode(
-                                                      AppPaletteLight
-                                                          .lightBlack,
-                                                      BlendMode.srcIn)),
-                                          const SizedBox(
-                                            width: 4,
-                                          ),
-                                          Text(
-                                            'Sort',
-                                            style: Theme.of(context)
-                                                .textTheme
-                                                .bodyLarge!
-                                                .copyWith(
-                                                    fontSize: 14,
-                                                    fontWeight:
-                                                        FontWeight.w400),
-                                          ),
-                                          const Icon(
-                                            Icons.arrow_drop_down,
-                                            color: AppPaletteLight.lightBlack,
-                                          )
-                                        ],
+                                  GestureDetector(
+                                    onTap: openSortDialog,
+                                    child: Container(
+                                      alignment: Alignment.center,
+                                      decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(6),
+                                          border: Border.all(
+                                              width: 0.5,
+                                              color:
+                                                  AppPaletteLight.lightBlack)),
+                                      child: Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                            vertical: 5.0, horizontal: 12),
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.center,
+                                          children: [
+                                            SvgPicture.asset(
+                                                DesignConfiguration.setSvgPath(
+                                                    'sortby'),
+                                                colorFilter:
+                                                    const ColorFilter.mode(
+                                                        AppPaletteLight
+                                                            .lightBlack,
+                                                        BlendMode.srcIn)),
+                                            const SizedBox(
+                                              width: 4,
+                                            ),
+                                            Text(
+                                              texts.sort,
+                                              style: Theme.of(context)
+                                                  .textTheme
+                                                  .bodyLarge!
+                                                  .copyWith(
+                                                      fontSize: 14,
+                                                      fontWeight:
+                                                          FontWeight.w400),
+                                            ),
+                                            const Icon(
+                                              Icons.arrow_drop_down,
+                                              color: AppPaletteLight.lightBlack,
+                                            )
+                                          ],
+                                        ),
                                       ),
                                     ),
                                   ),
                                   const SizedBox(
                                     width: 12,
                                   ),
-                                  Container(
-                                    alignment: Alignment.center,
-                                    decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(6),
-                                        border: Border.all(
-                                            width: 0.5,
-                                            color: AppPaletteLight.lightBlack)),
-                                    child: Padding(
-                                      padding: const EdgeInsets.symmetric(
-                                          vertical: 5.0, horizontal: 8),
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.center,
-                                        children: [
-
-                                          Text(
-                                            'Brands',
-                                            style: Theme.of(context)
-                                                .textTheme
-                                                .bodyLarge!
-                                                .copyWith(
-                                                    fontSize: 14,
-                                                    fontWeight:
-                                                        FontWeight.w400),
-                                          ),
-                                          Text(
-                                            ' (1)',
-                                            style: Theme.of(context)
-                                                .textTheme
-                                                .bodyLarge!
-                                                .copyWith(
-                                                fontSize: 12,
-                                                fontWeight:
-                                                FontWeight.w500),
-                                          ),
-                                          const Icon(
-                                            Icons.arrow_drop_down,
-                                            color: AppPaletteLight.lightBlack,
-                                          )
-                                        ],
+                                  GestureDetector(
+                                    onTap: openFilterDialog,
+                                    child: Container(
+                                      alignment: Alignment.center,
+                                      decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(6),
+                                          border: Border.all(
+                                              width: 0.5,
+                                              color:
+                                                  AppPaletteLight.lightBlack)),
+                                      child: Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                            vertical: 5.0, horizontal: 8),
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.center,
+                                          children: [
+                                            Text(
+                                              texts.brand,
+                                              style: Theme.of(context)
+                                                  .textTheme
+                                                  .bodyLarge!
+                                                  .copyWith(
+                                                      fontSize: 14,
+                                                      fontWeight:
+                                                          FontWeight.w400),
+                                            ),
+                                            Text(
+                                              ' (1)',
+                                              style: Theme.of(context)
+                                                  .textTheme
+                                                  .bodyLarge!
+                                                  .copyWith(
+                                                      fontSize: 12,
+                                                      fontWeight:
+                                                          FontWeight.w500),
+                                            ),
+                                            const Icon(
+                                              Icons.arrow_drop_down,
+                                              color: AppPaletteLight.lightBlack,
+                                            )
+                                          ],
+                                        ),
                                       ),
                                     ),
                                   ),
@@ -403,6 +422,98 @@ class _AllCategoriesState extends State<AllCategories>
           );
         },
       ),
+    );
+  }
+
+  String orderBy = 'DESC'; // Default value
+  String sortBy = ''; // Default value
+
+  void openSortDialog() {
+    List<Map<String, String>> sortOptions = [
+      {'label': 'Relevance', 'sortBy': '', 'orderBy': 'DESC'},
+      {'label': 'Price: Low to High', 'sortBy': 'pv.price', 'orderBy': 'ASC'},
+      {'label': 'Price: High to Low', 'sortBy': 'pv.price', 'orderBy': 'DESC'},
+      {'label': 'Discount', 'sortBy': 'discount', 'orderBy': 'ASC'},
+    ];
+
+    showModalBottomSheet(
+      context: context,
+      backgroundColor: Colors.white,
+      isScrollControlled: true,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(25),
+          topRight: Radius.circular(25),
+        ),
+      ),
+      builder: (context) {
+        return SortDialog(
+          title: 'Sort By',
+          initialSortBy: sortBy,
+          initialOrderBy: orderBy,
+          sortOptions: sortOptions,
+          onSortSelected: (String selectedSortBy, String selectedOrderBy) {
+            setState(() {
+              sortBy = selectedSortBy;
+              orderBy = selectedOrderBy;
+            });
+          },
+        );
+      },
+    );
+  }
+
+  void showFilterBottomSheet(BuildContext context) {
+    showModalBottomSheet(
+      backgroundColor: AppPaletteLight.background,
+      context: context,
+      isScrollControlled: true,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(25),
+          topRight: Radius.circular(25),
+        ),
+      ),
+      builder: (context) {
+        return FilterBottomSheet(
+          initialPriceRange: const RangeValues(100, 2000),
+          brands: const ['Nike', 'Adidas', 'Puma', 'Reebok'],
+          weights: const ['1kg', '2kg', '500g', '250g'],
+          variants: const ['Spicy', 'Sweet', 'Salty'],
+          onApply:
+              (priceRange, selectedBrands, selectedWeights, selectedVariants) {
+                debugPrint("Price Range: $priceRange");
+            debugPrint("Selected Brands: $selectedBrands");
+            debugPrint("Selected Weights: $selectedWeights");
+            debugPrint("Selected Variants: $selectedVariants");
+          },
+        );
+      },
+    );
+  }
+
+
+  void openFilterDialog() {
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(25),
+          topRight: Radius.circular(25),
+        ),
+      ),
+      builder: (context) {
+        return BrandFilter(
+          title: "Filters",
+          onApply: (selectedFilters) {
+            debugPrint("Selected Filters: $selectedFilters");
+          },
+          onClearFilters: () {
+            debugPrint("Filters Cleared");
+          },
+        );
+      },
     );
   }
 }
