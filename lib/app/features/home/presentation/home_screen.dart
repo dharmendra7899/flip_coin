@@ -95,15 +95,6 @@ class _HomeScreenState extends State<HomeScreen> {
                     const SizedBox(
                       height: 20,
                     ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                      child: ShopByStore(
-                        title: texts.shopByStore,
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 20,
-                    ),
                     const ProductList(
                       sectionTitle: 'Monthly Big Saver',
                     ),

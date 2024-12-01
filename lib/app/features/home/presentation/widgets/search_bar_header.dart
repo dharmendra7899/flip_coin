@@ -3,6 +3,7 @@ import 'package:flip_coin/app/core/extensions/context_extension.dart';
 import 'package:flip_coin/app/core/helper_function/helper_function.dart';
 import 'package:flip_coin/app/core/theme/app_palette.dart';
 import 'package:flip_coin/app/features/bottom_navigation/provider/bottom_navigation_provider.dart';
+import 'package:flip_coin/app/routes/navigation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
@@ -69,12 +70,11 @@ class SearchBarHeaderDelegate extends SliverPersistentHeaderDelegate {
                     context
                         .read<BottomNavigationProvider>()
                         .setMicClickBtn(true);
-                    // Routes.navigateToSearchScreen(context);
                   },
                   child: SvgPicture.asset(
                     DesignConfiguration.setSvgPath('voice_search'),
-                    height: 25,
-                    width: 25,
+                    height: 20,
+                    width: 20,
                     colorFilter: const ColorFilter.mode(
                         AppPaletteLight.lightBlack, BlendMode.srcIn),
                   ),

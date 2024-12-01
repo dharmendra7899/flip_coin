@@ -35,7 +35,6 @@ class BottomNavigationProvider extends ChangeNotifier {
 
   setMicClickBtn(bool value) {
     isMicClick = value;
-
     notifyListeners();
   }
 

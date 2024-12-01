@@ -218,7 +218,7 @@ class _AllCategoriesState extends State<AllCategories>
                 ),
               ),
               Expanded(
-                flex: 3,
+                flex: 4,
                 child: Container(
                   color: AppPaletteLight.background,
                   child: Column(

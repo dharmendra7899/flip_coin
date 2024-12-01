@@ -2,6 +2,9 @@ import 'package:flip_coin/app/core/assets/constant_images.dart';
 import 'package:flip_coin/app/core/custom/text.dart';
 import 'package:flip_coin/app/core/extensions/context_extension.dart';
 import 'package:flip_coin/app/core/theme/app_palette.dart';
+import 'package:flip_coin/app/features/category/presentation/all_categories.dart';
+import 'package:flip_coin/app/features/product_details/presentation/product_details.dart';
+import 'package:flip_coin/app/routes/navigation.dart';
 import 'package:flutter/material.dart';
 
 class BrandWidget extends StatefulWidget {
@@ -79,40 +82,43 @@ class _BrandWidgetState extends State<BrandWidget> {
   }
 
   Widget _buildCategoryItem(String label, String asset) {
-    return Column(
-      children: [
-        Container(
-          height: 100,
-          width: 100,
-          alignment: Alignment.centerLeft,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(20),
-            border: Border.all(color: AppPaletteLight.gray, width: 0.7),
-            color: Colors.red.shade50,
-          ),
-          child: ClipRRect(
+    return GestureDetector(
+      onTap: ()=> navigateTo(context: context, to: const AllCategories()),
+      child: Column(
+        children: [
+          Container(
+            height: 100,
+            width: 100,
+            alignment: Alignment.centerLeft,
+            decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20),
-              child: Image.asset(
-                asset,
-                height: 100,
-                width: 100,
-                fit: BoxFit.cover,
-              )),
-        ),
-        const SizedBox(height: 4),
-        SizedBox(
-          width: 90,
-          child: Text(
-            "label",
-            textAlign: TextAlign.center,
-            maxLines: 2,
-            style: context.themeData.textTheme.bodyMedium?.copyWith(
-                fontSize: 14,
-                fontWeight: FontWeight.w500,
-                overflow: TextOverflow.ellipsis),
+              border: Border.all(color: AppPaletteLight.gray, width: 0.7),
+              color: Colors.red.shade50,
+            ),
+            child: ClipRRect(
+                borderRadius: BorderRadius.circular(20),
+                child: Image.asset(
+                  asset,
+                  height: 100,
+                  width: 100,
+                  fit: BoxFit.cover,
+                )),
           ),
-        ),
-      ],
+          const SizedBox(height: 4),
+          SizedBox(
+            width: 90,
+            child: Text(
+              "label",
+              textAlign: TextAlign.center,
+              maxLines: 2,
+              style: context.themeData.textTheme.bodyMedium?.copyWith(
+                  fontSize: 14,
+                  fontWeight: FontWeight.w500,
+                  overflow: TextOverflow.ellipsis),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

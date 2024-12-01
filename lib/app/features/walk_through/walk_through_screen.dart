@@ -1,10 +1,12 @@
 import 'package:flip_coin/app/core/assets/constant_images.dart';
 import 'package:flip_coin/app/core/extensions/context_extension.dart';
+import 'package:flip_coin/app/core/helper_function/helper_function.dart';
 import 'package:flip_coin/app/core/theme/app_palette.dart';
 import 'package:flip_coin/app/features/bottom_navigation/dashboard.dart';
 import 'package:flip_coin/app/routes/navigation.dart';
 import 'package:flip_coin/config/strings.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class Walkthrough extends StatefulWidget {
   const Walkthrough({super.key});
@@ -16,24 +18,44 @@ class Walkthrough extends StatefulWidget {
 class _WalkthroughState extends State<Walkthrough> {
   PageController pageController = PageController();
   int currentPage = 0;
+  late List<Map<String, String>> onBoardingData = [];
 
-  List<Map<String, String>> onBoardingData = [
-    {
-      'image': ConstantImage.appLogo,
-      'title': strings.appName,
-      'description': strings.appName,
-    },
-    {
-      'image': ConstantImage.appLogo,
-      'title': strings.appName,
-      'description': strings.appName,
-    },
-    {
-      'image': ConstantImage.appLogo,
-      'title': strings.appName,
-      'description': strings.appName,
-    },
-  ];
+  @override
+  void initState() {
+    super.initState();
+    Future.delayed(
+      Duration.zero,
+      () {
+        setState(
+          () {
+            onBoardingData = [
+              {
+                'image': 'introimage_a',
+                'title': strings.intro1,
+                'description': strings.introDescription1,
+              },
+              {
+                'image': 'introimage_b',
+                'title': strings.intro2,
+                'description': strings.introDescription2,
+              },
+              {
+                'image': 'introimage_c',
+                'title': strings.intro3,
+                'description': strings.introDescription3,
+              },
+            ];
+          },
+        );
+      },
+    );
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    pageController.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -51,27 +73,32 @@ class _WalkthroughState extends State<Walkthrough> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
+                  SizedBox(
+                    height: 400,
+                    width: MediaQuery.of(context).size.width * 0.7,
+                    child: SvgPicture.asset(
+                      fit: BoxFit.fitWidth,
+                      DesignConfiguration.setSvgPath(
+                        onBoardingData[index]['image']!,
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 50),
                   Text(
                     onBoardingData[index]['title']!,
-                    style: context.themeData.textTheme.labelLarge,
+                    textAlign: TextAlign.center,
+                    style: context.themeData.textTheme.labelLarge!
+                        .copyWith(fontWeight: FontWeight.w600, fontSize: 25),
                   ),
-                  const SizedBox(
-                    height: 15,
-                  ),
-                  ClipRRect(
-                      borderRadius: BorderRadius.circular(200),
-                      child: Image.asset(
-                        onBoardingData[index]['image']!,
-                        scale: 5,
-                      )),
-                  const SizedBox(height: 40),
+                  const SizedBox(height: 10),
                   Padding(
                     padding: const EdgeInsets.symmetric(
-                        horizontal: 20.0, vertical: 8),
+                        horizontal: 30.0, vertical: 8),
                     child: Text(
+                      textAlign: TextAlign.center,
                       onBoardingData[index]['description']!,
                       style: context.themeData.textTheme.labelMedium
-                          ?.copyWith(fontWeight: FontWeight.w400),
+                          ?.copyWith(fontWeight: FontWeight.w500, fontSize: 20),
                     ),
                   ),
                   const SizedBox(height: 20),
@@ -108,8 +135,7 @@ class _WalkthroughState extends State<Walkthrough> {
                     } else {
                       if (context.mounted) {
                         navigateRemoveUntil(
-                            context: context,
-                            to: const Dashboard());
+                            context: context, to: const Dashboard());
                       }
                     }
                   },

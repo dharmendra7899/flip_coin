@@ -12,6 +12,8 @@ import 'package:flip_coin/app/features/bottom_navigation/provider/bottom_navigat
 import 'package:flip_coin/app/features/cart/presentation/cart_screen.dart';
 import 'package:flip_coin/app/features/category/presentation/category_screen.dart';
 import 'package:flip_coin/app/features/home/presentation/home_screen.dart';
+import 'package:flip_coin/app/features/refer_and_earn/presentation/refer_and_earn.dart';
+import 'package:flip_coin/app/routes/navigation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
@@ -115,7 +117,10 @@ class DashboardPageState extends State<Dashboard>
           extendBodyBehindAppBar: false,
           extendBody: true,
           backgroundColor: AppPaletteLight.background,
-          appBar: selBottom == 0||selBottom == 1||selBottom == 3
+          appBar: selBottom == 0 ||
+                  selBottom == 1 ||
+                  selBottom == 2 ||
+                  selBottom == 3
               ? _getAppBar()
               : AppBar(
                   systemOverlayStyle: const SystemUiOverlayStyle(
@@ -132,10 +137,9 @@ class DashboardPageState extends State<Dashboard>
               controller: _tabController,
               children: const [
                 HomeScreen(),
-                CategoryScreen(isBackButton: false),
-                // AllCategories(),
-                CartScreen(isBackButton: false),
-                AccountScreen(isBackButton: false),
+                CategoryScreen(),
+                CartScreen(),
+                AccountScreen(),
               ],
             ),
           ),
@@ -156,7 +160,8 @@ class DashboardPageState extends State<Dashboard>
       toolbarHeight: 60,
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(
-          bottom: Radius.circular(12), // Radius for bottom left and right corners
+          bottom:
+              Radius.circular(12), // Radius for bottom left and right corners
         ),
       ),
       centerTitle: false,
@@ -164,19 +169,9 @@ class DashboardPageState extends State<Dashboard>
       backgroundColor: AppPaletteLight.secondaryLight,
       title: Row(
         children: [
-          Container(
+          Image.asset(
+            "assets/images/logo1.jpeg",
             height: 40,
-            width: 40,
-            alignment: Alignment.center,
-            padding: const EdgeInsets.all(5),
-            decoration: const BoxDecoration(
-              shape: BoxShape.circle,
-              color: AppPaletteLight.gray,
-            ),
-            child: Image.asset(
-              ConstantImage.account1,
-              fit: BoxFit.contain,
-            ),
           ),
           const SizedBox(width: 10),
           Row(
@@ -211,8 +206,6 @@ class DashboardPageState extends State<Dashboard>
           )
         ],
       ),
-
-
       actions: [
         IconButton(
           icon: const Icon(

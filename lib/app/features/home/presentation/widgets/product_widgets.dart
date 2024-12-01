@@ -7,8 +7,10 @@ import 'package:flutter/material.dart';
 
 class ProductList extends StatelessWidget {
   final String sectionTitle;
+  final bool? seeAll;
 
-  const ProductList({super.key, required this.sectionTitle});
+  const ProductList(
+      {super.key, required this.sectionTitle, this.seeAll = true});
 
   @override
   Widget build(BuildContext context) {
@@ -27,14 +29,16 @@ class ProductList extends StatelessWidget {
                     fontWeight: FontWeight.w600,
                     overflow: TextOverflow.ellipsis),
               ),
-              Text(
-                texts.seeAll,
-                style: context.themeData.textTheme.bodyMedium?.copyWith(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w500,
-                  color: AppPaletteLight.primary,
-                ),
-              ),
+              seeAll == true
+                  ? Text(
+                      texts.seeAll,
+                      style: context.themeData.textTheme.bodyMedium?.copyWith(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w500,
+                        color: AppPaletteLight.primary,
+                      ),
+                    )
+                  : const SizedBox(),
             ],
           ),
           const SizedBox(

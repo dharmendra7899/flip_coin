@@ -1,6 +1,13 @@
 class Strings {
   String get appName => 'Flip Coin';
 
+  String get intro1 => "Search Items";
+  String get intro2 => "Order it";
+  String get intro3 =>"You Got it";
+
+  String get introDescription1 => "Search millions of items you want very easily";
+  String get introDescription2 => "We're here to make your life easier. Just relax and let's get started";
+  String get introDescription3 =>"Special for you. Free delivered fees for many cities.";
   String get getStarted => 'Get Started';
 
   String get next => 'Next';

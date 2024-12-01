@@ -1,3 +1,4 @@
+import 'package:flip_coin/app/core/assets/constant_images.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flip_coin/app/core/theme/app_palette.dart';
@@ -22,6 +23,7 @@ class BrandFilter extends StatefulWidget {
 class _BrandFilterState extends State<BrandFilter> {
   Map<String, List<String>> selectedFilters = {}; // Stores selected filters
   final List<String> brandList = ["Zoff", "Happilo", "Tata", "Mr. Makhana"];
+  final List<String> tagList = ["Brand", "Type", "Properties"];
   final Map<String, bool> checkboxStates = {}; // Tracks checkbox states
   final TextEditingController searchController = TextEditingController();
 
@@ -122,7 +124,7 @@ class _BrandFilterState extends State<BrandFilter> {
           },
           child: ListView.builder(
             padding: const EdgeInsetsDirectional.only(top: 10.0),
-            itemCount: brandList.length,
+            itemCount: tagList.length,
             itemBuilder: (context, index) {
               return GestureDetector(
                 onTap: () {
@@ -130,12 +132,12 @@ class _BrandFilterState extends State<BrandFilter> {
                 },
                 child: Padding(
                   padding:
-                  const EdgeInsets.symmetric(vertical: 8.0, horizontal: 12.0),
+                  const EdgeInsets.symmetric(vertical: 12.0, horizontal: 12.0),
                   child: Text(
-                    brandList[index],
+                    tagList[index],
                     style: Theme.of(context).textTheme.bodyLarge!.copyWith(
-                      fontSize: 12,
-                      fontWeight: FontWeight.w600,
+                      fontSize: 13,
+                      fontWeight: FontWeight.w500,
                       color: AppPaletteLight.black,
                     ),
                   ),
@@ -150,7 +152,7 @@ class _BrandFilterState extends State<BrandFilter> {
 
   Widget _buildSubList() {
     return Expanded(
-      flex: 3,
+      flex: 4,
       child: Container(
         color: AppPaletteLight.background,
         child: ListView.builder(
@@ -158,33 +160,56 @@ class _BrandFilterState extends State<BrandFilter> {
           itemCount: brandList.length,
           itemBuilder: (context, index) {
             final item = brandList[index];
-            return CheckboxListTile(
+            return ListTile(
               visualDensity: const VisualDensity(vertical: -4),
               contentPadding: EdgeInsets.zero,
-              title: Text(
-                item,
-                style: Theme.of(context).textTheme.bodyLarge!.copyWith(
-                  fontSize: 18,
-                  fontWeight: FontWeight.w500,
+              dense: true,selected: true,
+              leading: ClipRRect(
+                borderRadius: BorderRadius.circular(8.0), // Optional: Rounded corners
+                child: Image.asset(
+                ConstantImage.mutton, // Replace with your image URL
+                  width: 50,
+                  height: 50,
+                  fit: BoxFit.cover,
                 ),
               ),
-              value: checkboxStates[item],
-              activeColor: AppPaletteLight.primary,
-              onChanged: (bool? value) {
-                setState(() {
-                  checkboxStates[item] = value ?? false;
-                  if (value == true) {
-                    selectedFilters.update(
-                      'brand',
-                          (list) => [...list, item],
-                      ifAbsent: () => [item],
-                    );
-                  } else {
-                    selectedFilters['brand']?.remove(item);
-                  }
-                });
-              },
+              title: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+
+                  Expanded(
+                    child: Text(
+                      item,
+                      style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                        fontSize: 12,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                  ),
+                  const SizedBox(width: 8),
+                  Checkbox(
+                    value: checkboxStates[item],
+                    activeColor: AppPaletteLight.primary,
+                    onChanged: (bool? value) {
+                      setState(() {
+                        checkboxStates[item] = value ?? false;
+                        if (value == true) {
+                          selectedFilters.update(
+                            'brand',
+                                (list) => [...list, item],
+                            ifAbsent: () => [item],
+                          );
+                        } else {
+                          selectedFilters['brand']?.remove(item);
+                        }
+                      });
+                    },
+                  ),
+
+                ],
+              ),
             );
+
+
           },
         ),
       ),

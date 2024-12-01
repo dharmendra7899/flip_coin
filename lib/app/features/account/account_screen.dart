@@ -8,27 +8,20 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class AccountScreen extends StatefulWidget {
-  final bool? isBackButton;
-  final String? type;
-
-  const AccountScreen({super.key, this.isBackButton = true, this.type});
+  const AccountScreen({
+    super.key,
+  });
 
   @override
   State<AccountScreen> createState() => _AccountScreenState();
 }
 
 class _AccountScreenState extends State<AccountScreen> {
-  String? selectedTab;
-
-  @override
-  void initState() {
-    selectedTab = widget.type;
-    super.initState();
-  }
-
   final List<Map<String, String>> accountList = [
     {"name": texts.address},
+    {"name": texts.wishlist},
     {"name": texts.orders},
+    {"name": texts.referEarn},
     {"name": texts.help},
     {"name": texts.notification},
     {"name": texts.privacy},
@@ -42,36 +35,29 @@ class _AccountScreenState extends State<AccountScreen> {
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.width;
-    return WillPopScope(
-      onWillPop: () async {
-        if (widget.isBackButton == true) {
-          return true;
-        }
-        Provider.of<BottomNavigationProvider>(context, listen: false)
-            .onTapped(0);
-        return false;
-      },
-      child: Container( height: height,
-        width: width,
-        decoration: const BoxDecoration(
-          gradient: LinearGradient(
-              colors: [
-                AppPaletteLight.secondaryLight,
-                AppPaletteLight.background,
-                AppPaletteLight.background,
-                AppPaletteLight.background,
-              ],
-              begin: FractionalOffset.topCenter,
-              end: FractionalOffset.bottomCenter,
-              tileMode: TileMode.repeated),
-        ),
-        child: Padding(
-          padding: const EdgeInsets.all(12.0),
+    return Container(
+      height: height,
+      width: width,
+      decoration: const BoxDecoration(
+        gradient: LinearGradient(
+            colors: [
+              AppPaletteLight.secondaryLight,
+              AppPaletteLight.background,
+              AppPaletteLight.background,
+              AppPaletteLight.background,
+            ],
+            begin: FractionalOffset.topCenter,
+            end: FractionalOffset.bottomCenter,
+            tileMode: TileMode.repeated),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.all(12.0),
+        child: SingleChildScrollView(
           child: Column(
             children: [
               _profileContainer(),
               const SizedBox(
-                height: 20,
+                height: 10,
               ),
               ListView.separated(
                 padding: EdgeInsets.zero,

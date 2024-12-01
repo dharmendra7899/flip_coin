@@ -74,6 +74,9 @@ class Texts {
   String get cart => 'Cart';
 
   String get account => 'Account';
+  String get referEarn => 'Refer & Earn';
+  String get offerApplied => 'Offer applied';
+  String get saveLater => 'Save for later';
 
   String get setting => 'Setting';
 
@@ -103,6 +106,7 @@ class Texts {
 
   String get orders => 'My Orders';
   String get address => 'Address';
+  String get wishlist => 'WishList';
 
   String get help => 'Help & Support';
 
@@ -126,6 +130,7 @@ class Texts {
   String get tax => 'Inclusive of all taxes';
   String get moreProduct => 'More Product';
   String get lookingFor => 'You are looking for';
+  String get alsoLike => 'You might also like';
   String get cod => 'COD';
   String get cancel => 'Cancellable Till';
   String get returnable => 'No Returnable';
