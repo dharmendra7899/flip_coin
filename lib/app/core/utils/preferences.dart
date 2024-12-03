@@ -5,6 +5,16 @@ class SharedPreferencesSessionManager {
 
   SharedPreferencesSessionManager(this._prefs);
 
+  Future<void> setOnboarding(bool val) async {
+    await _prefs.setBool('onboarding', val);
+  }
+
+  Future<void> getOnboarding() async {
+    _prefs.getBool(
+      'onboarding',
+    );
+  }
+
   Future<void> setSession(String accessToken) async {
     await _prefs.setString('access_token', accessToken);
   }

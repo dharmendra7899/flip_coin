@@ -1,6 +1,5 @@
 import 'package:flip_coin/app/core/custom/app_button.dart';
 import 'package:flip_coin/app/core/extensions/context_extension.dart';
-import 'package:flip_coin/app/core/helper_function/helper_function.dart';
 import 'package:flip_coin/app/core/theme/app_palette.dart';
 import 'package:flutter/material.dart';
 
@@ -22,36 +21,34 @@ class _BillingDetailsState extends State<BillingDetails> {
               borderRadius: BorderRadius.circular(12),
               color: Colors.blue.shade50,
               boxShadow: boxShadow()),
-          child: Expanded(
-            child: Row(
-              children: [
-                const Icon(
-                  Icons.check_circle,
-                  color: Colors.blue,
-                  size: 40,
-                ),
-                const SizedBox(width: 8.0),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "Yay! 10% OFF applied!",
-                      style: context.themeData.textTheme.bodyMedium?.copyWith(
-                        fontSize: 14.0,
-                        color: AppPaletteLight.blueColor,
-                      ),
+          child: Row(
+            children: [
+              const Icon(
+                Icons.check_circle,
+                color: Colors.blue,
+                size: 40,
+              ),
+              const SizedBox(width: 8.0),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    "Yay! 10% OFF applied!",
+                    style: context.themeData.textTheme.bodyMedium?.copyWith(
+                      fontSize: 14.0,
+                      color: AppPaletteLight.blueColor,
                     ),
-                    Text(
-                      "Offer applied on Home & Kitchen essentials.",
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                      style: context.themeData.textTheme.bodyMedium?.copyWith(
-                          fontSize: 14.0, color: AppPaletteLight.textColor),
-                    ),
-                  ],
-                ),
-              ],
-            ),
+                  ),
+                  Text(
+                    "Offer applied on Home & Kitchen essentials.",
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: context.themeData.textTheme.bodyMedium?.copyWith(
+                        fontSize: 14.0, color: AppPaletteLight.textColor),
+                  ),
+                ],
+              ),
+            ],
           ),
         ),
         ClipPath(

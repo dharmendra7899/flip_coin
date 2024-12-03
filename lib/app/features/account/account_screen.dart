@@ -3,9 +3,7 @@ import 'package:flip_coin/app/core/custom/app_button.dart';
 import 'package:flip_coin/app/core/custom/text.dart';
 import 'package:flip_coin/app/core/extensions/context_extension.dart';
 import 'package:flip_coin/app/core/theme/app_palette.dart';
-import 'package:flip_coin/app/features/bottom_navigation/provider/bottom_navigation_provider.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 class AccountScreen extends StatefulWidget {
   const AccountScreen({
@@ -18,7 +16,6 @@ class AccountScreen extends StatefulWidget {
 
 class _AccountScreenState extends State<AccountScreen> {
   final List<Map<String, String>> accountList = [
-    {"name": texts.address},
     {"name": texts.wishlist},
     {"name": texts.orders},
     {"name": texts.referEarn},

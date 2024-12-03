@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'dart:io';
-import 'package:flip_coin/app/core/assets/constant_images.dart';
 import 'package:flip_coin/app/core/custom/text.dart';
 import 'package:flip_coin/app/core/custom/validate_connectivity.dart';
 import 'package:flip_coin/app/core/custom_providers/internet_provider.dart';
@@ -12,8 +11,6 @@ import 'package:flip_coin/app/features/bottom_navigation/provider/bottom_navigat
 import 'package:flip_coin/app/features/cart/presentation/cart_screen.dart';
 import 'package:flip_coin/app/features/category/presentation/category_screen.dart';
 import 'package:flip_coin/app/features/home/presentation/home_screen.dart';
-import 'package:flip_coin/app/features/refer_and_earn/presentation/refer_and_earn.dart';
-import 'package:flip_coin/app/routes/navigation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
@@ -35,11 +32,7 @@ class DashboardPageState extends State<Dashboard>
   int selBottom = 0;
   late TabController _tabController;
 
-  late AnimationController navigationContainerAnimationController =
-      AnimationController(
-    vsync: this,
-    duration: const Duration(milliseconds: 200),
-  );
+  late AnimationController navigationContainerAnimationController;
 
   changeTabPosition(int index) {
     Future.delayed(Duration.zero, () {
@@ -49,12 +42,17 @@ class DashboardPageState extends State<Dashboard>
 
   @override
   void initState() {
-    WidgetsBinding.instance.addObserver(this);
-
     _tabController = TabController(
       length: 4,
       vsync: this,
     );
+
+    navigationContainerAnimationController = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 100),
+    );
+
+    WidgetsBinding.instance.addObserver(this);
 
     _tabController.addListener(
       () {
@@ -132,17 +130,19 @@ class DashboardPageState extends State<Dashboard>
                   elevation: 0,
                   backgroundColor: AppPaletteLight.background,
                 ),
-          body: SafeArea(
-            child: TabBarView(
-              controller: _tabController,
-              children: const [
-                HomeScreen(),
-                CategoryScreen(),
-                CartScreen(),
-                AccountScreen(),
-              ],
-            ),
-          ),
+          body: context.watch<BottomNavigationProvider>().isLoading == true
+              ? const Center(child: CircularProgressIndicator.adaptive())
+              : SafeArea(
+                  child: TabBarView(
+                    controller: _tabController,
+                    children: const [
+                      HomeScreen(),
+                      CategoryScreen(),
+                      CartScreen(),
+                      AccountScreen(),
+                    ],
+                  ),
+                ),
           bottomNavigationBar: _getBottomBar(),
         );
       }),

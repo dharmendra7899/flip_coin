@@ -1,8 +1,8 @@
-import 'package:flip_coin/app/core/assets/constant_images.dart';
 import 'package:flip_coin/app/core/extensions/context_extension.dart';
 import 'package:flip_coin/app/core/helper_function/helper_function.dart';
 import 'package:flip_coin/app/core/theme/app_palette.dart';
-import 'package:flip_coin/app/features/bottom_navigation/dashboard.dart';
+import 'package:flip_coin/app/core/utils/preferences.dart';
+import 'package:flip_coin/app/features/auth/presentation/login/login_page.dart';
 import 'package:flip_coin/app/routes/navigation.dart';
 import 'package:flip_coin/config/strings.dart';
 import 'package:flutter/material.dart';
@@ -126,16 +126,18 @@ class _WalkthroughState extends State<Walkthrough> {
                   ),
                 ),
                 GestureDetector(
-                  onTap: () {
+                  onTap: () async {
                     if (currentPage != onBoardingData.length - 1) {
                       pageController.nextPage(
                         duration: const Duration(milliseconds: 500),
                         curve: Curves.ease,
                       );
                     } else {
+                      await SharedPreferencesSessionManager.setBool(
+                          data: true, key: "onboarding");
                       if (context.mounted) {
                         navigateRemoveUntil(
-                            context: context, to: const Dashboard());
+                            context: context, to: const LoginPage());
                       }
                     }
                   },

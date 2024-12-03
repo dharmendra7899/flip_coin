@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class BottomNavigationProvider extends ChangeNotifier {
-
+  bool isLoading = true;
   bool _showBars = true;
   bool isMicClick = false;
   int _selectedBottomNavigationBarIndex = 0;
@@ -9,14 +9,13 @@ class BottomNavigationProvider extends ChangeNotifier {
   late Animation<Offset> _animationBottomBarOffset;
   late Animation<Offset> _animationAppBarOffset;
 
-  get getBars=> _showBars;
+  get getBars => _showBars;
+
   get curSlider => _curSlider;
 
   bool sliderLoading = true;
 
   int _curSlider = 0;
-
-
 
   AnimationController get animationController => _animationController;
 
@@ -52,11 +51,11 @@ class BottomNavigationProvider extends ChangeNotifier {
       AnimationController animationController) {
     _animationBottomBarOffset =
         Tween<Offset>(begin: Offset.zero, end: const Offset(0.0, 1.0)).animate(
-          CurvedAnimation(
-            parent: animationController,
-            curve: Curves.easeIn,
-          ),
-        );
+      CurvedAnimation(
+        parent: animationController,
+        curve: Curves.easeIn,
+      ),
+    );
     notifyListeners();
   }
 
@@ -64,11 +63,12 @@ class BottomNavigationProvider extends ChangeNotifier {
     _animationAppBarOffset =
         Tween<Offset>(end: const Offset(0.0, -1.25), begin: Offset.zero)
             .animate(
-          CurvedAnimation(
-            parent: animationController,
-            curve: Curves.easeIn,
-          ),
-        );
+      CurvedAnimation(
+        parent: animationController,
+        curve: Curves.easeIn,
+      ),
+    );
+    isLoading = false;
     notifyListeners();
   }
 
@@ -77,23 +77,11 @@ class BottomNavigationProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-
-
-
-
-
-
-
-
-
-
   int _index = 0;
 
   int get index => _index;
 
   bool hideBottomNavigationBar = false;
-
-
 
   void onTapped(int i) {
     _index = i;

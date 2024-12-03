@@ -1,8 +1,6 @@
 import 'package:flip_coin/app/core/assets/constant_images.dart';
-import 'package:flip_coin/app/core/custom/app_button.dart';
 import 'package:flip_coin/app/core/custom/text.dart';
 import 'package:flip_coin/app/core/extensions/context_extension.dart';
-import 'package:flip_coin/app/core/helper_function/helper_function.dart';
 import 'package:flip_coin/app/core/theme/app_palette.dart';
 import 'package:flutter/material.dart';
 

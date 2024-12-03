@@ -10,6 +10,7 @@ class Texts {
       'random unique string fore more product: ${Random().nextInt(10000)}';
 
   String get getStarted => 'Get Started';
+  String get getOTP => 'Get OTP';
 
   String get next => 'Next';
 
@@ -145,6 +146,9 @@ class Texts {
   String get range => 'Price Range';
   String get apply => 'Apply';
   String get clear => 'Clear';
+  String get completeProfile => 'Complete your profile';
+  String get nameEmail => 'Please provide your name and email';
+  String get saveProceed => 'Save & Proceed';
 }
 
 final texts = Texts();

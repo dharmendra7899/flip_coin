@@ -3,19 +3,15 @@ import 'package:flip_coin/app/core/custom/text.dart';
 import 'package:flip_coin/app/core/extensions/context_extension.dart';
 import 'package:flip_coin/app/core/helper_function/helper_function.dart';
 import 'package:flip_coin/app/core/theme/app_palette.dart';
-import 'package:flip_coin/app/features/bottom_navigation/provider/bottom_navigation_provider.dart';
 import 'package:flip_coin/app/features/cart/presentation/widgets/address_list.dart';
 import 'package:flip_coin/app/features/cart/presentation/widgets/billing_details.dart';
 import 'package:flip_coin/app/features/cart/presentation/widgets/cart_widget.dart';
 import 'package:flip_coin/app/features/home/presentation/widgets/product_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:provider/provider.dart';
 
 class CartScreen extends StatefulWidget {
-  const CartScreen({
-    super.key,
-  });
+  const CartScreen({super.key});
 
   @override
   State<CartScreen> createState() => _CartScreenState();
@@ -26,21 +22,21 @@ class _CartScreenState extends State<CartScreen> {
     {
       "label": "Home",
       "address":
-          "Dharmendra Kumar, 4 489, ChaCha cycle store, Vibhav Khand, Gomti Nagar, Lucknow",
+      "Dharmendra Kumar, 4 489, ChaCha cycle store, Vibhav Khand, Gomti Nagar, Lucknow",
       "phone": "9847858536",
       "distance": "16.48 km away",
     },
     {
       "label": "Work",
       "address":
-          "Times value, Central academy, Sector 9, Indira Nagar, Lucknow",
+      "Times value, Central academy, Sector 9, Indira Nagar, Lucknow",
       "phone": "9876543241",
       "distance": "18.93 km away",
     },
     {
       "label": "Other",
       "address":
-          "53/Aawdh bihar, Indira Nagar, Near BD Palace, Harihar Nagar, Lucknow",
+      "53/Aawdh bihar, Indira Nagar, Near BD Palace, Harihar Nagar, Lucknow",
       "phone": "6473829292",
       "distance": "19.1 km away",
     },
@@ -100,17 +96,17 @@ class _CartScreenState extends State<CartScreen> {
                               "Delivering to Home",
                               style: context.themeData.textTheme.bodyMedium
                                   ?.copyWith(
-                                      fontSize: 14.0,
-                                      color: AppPaletteLight.textColor,
-                                      fontWeight: FontWeight.w600),
+                                  fontSize: 14.0,
+                                  color: AppPaletteLight.textColor,
+                                  fontWeight: FontWeight.w600),
                             ),
                             Text(
                               "Dharmendra Kumar, 4 484,Gomti Nagar Lucknow",
                               style: context.themeData.textTheme.bodyMedium
                                   ?.copyWith(
-                                      fontSize: 12.0,
-                                      color: AppPaletteLight.textColor,
-                                      fontWeight: FontWeight.w400),
+                                  fontSize: 12.0,
+                                  color: AppPaletteLight.textColor,
+                                  fontWeight: FontWeight.w400),
                             ),
                           ],
                         ),
@@ -120,10 +116,10 @@ class _CartScreenState extends State<CartScreen> {
                           "Change",
                           style: context.themeData.textTheme.bodyMedium
                               ?.copyWith(
-                                  fontSize: 14.0,
-                                  decoration: TextDecoration.underline,
-                                  color: AppPaletteLight.greenColor,
-                                  fontWeight: FontWeight.w500),
+                              fontSize: 14.0,
+                              decoration: TextDecoration.underline,
+                              color: AppPaletteLight.greenColor,
+                              fontWeight: FontWeight.w500),
                         ),
                         onPressed: () =>
                             showAddressBottomSheet(context, addressList),
@@ -167,7 +163,7 @@ class _CartScreenState extends State<CartScreen> {
                             fontWeight: FontWeight.w600),
                       ),
                       Text(
-                        "Order Cnanot be cancelled one packed for delivery. In case of unexpected delays, a refund will be provided. if applicable",
+                        "Order cannot be cancelled once packed for delivery. In case of unexpected delays, a refund will be provided, if applicable.",
                         style: context.themeData.textTheme.bodyMedium?.copyWith(
                             fontSize: 12.0,
                             color: AppPaletteLight.textColor,
@@ -190,7 +186,7 @@ class _CartScreenState extends State<CartScreen> {
   Widget checkoutWidget() {
     return Container(
       height: 60,
-      padding: EdgeInsets.symmetric(horizontal: 14, vertical: 8),
+      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
       decoration: BoxDecoration(
         borderRadius: const BorderRadius.only(
             topLeft: Radius.circular(12), topRight: Radius.circular(12)),
@@ -277,9 +273,9 @@ class _CartScreenState extends State<CartScreen> {
                     Text(
                       'Select address',
                       style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w600,
-                          ),
+                        fontSize: 16,
+                        fontWeight: FontWeight.w600,
+                      ),
                     ),
                     IconButton(
                       icon: const Icon(Icons.close),
@@ -305,17 +301,17 @@ class _CartScreenState extends State<CartScreen> {
                             color: AppPaletteLight.textColor,
                             size: 20,
                           ),
-                          const SizedBox(width: 8,),
+                          const SizedBox(width: 8),
                           Text(
                             'Add New Addresses',
                             style: Theme.of(context)
                                 .textTheme
                                 .bodyMedium
                                 ?.copyWith(
-                                  fontSize: 14,
-                                  color: AppPaletteLight.greenColor,
-                                  fontWeight: FontWeight.w500,
-                                ),
+                              fontSize: 14,
+                              color: AppPaletteLight.greenColor,
+                              fontWeight: FontWeight.w500,
+                            ),
                           ),
                         ],
                       ),
@@ -334,30 +330,28 @@ class _CartScreenState extends State<CartScreen> {
                     child: Text(
                       'Your saved addresses',
                       style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                            fontSize: 14,
-                            color: Colors.black87,
-                            fontWeight: FontWeight.w400,
-                          ),
+                        fontSize: 14,
+                        color: Colors.black87,
+                        fontWeight: FontWeight.w400,
+                      ),
                     ),
                   ),
                 ),
-                Expanded(
-                  child: ListView.separated(
-                    shrinkWrap: true,
-                    itemCount: addresses.length,
-                    itemBuilder: (context, index) {
-                      final address = addresses[index];
-                      return AddressList(
-                        label: address['label']!,
-                        address: address['address']!,
-                        phone: address['phone']!,
-                        distance: address['distance']!,
-                      );
-                    },
-                    separatorBuilder: (BuildContext context, int index) {
-                      return const SizedBox(height: 8);
-                    },
-                  ),
+                ListView.separated(
+                  shrinkWrap: true,
+                  itemCount: addresses.length,
+                  itemBuilder: (context, index) {
+                    final address = addresses[index];
+                    return AddressList(
+                      label: address['label']!,
+                      address: address['address']!,
+                      phone: address['phone']!,
+                      distance: address['distance']!,
+                    );
+                  },
+                  separatorBuilder: (BuildContext context, int index) {
+                    return const SizedBox(height: 8);
+                  },
                 ),
               ],
             ),

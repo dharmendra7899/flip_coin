@@ -1,11 +1,9 @@
 import 'package:flip_coin/app/core/custom/text.dart';
 import 'package:flip_coin/app/core/theme/app_palette.dart';
-import 'package:flip_coin/app/features/bottom_navigation/provider/bottom_navigation_provider.dart';
 import 'package:flip_coin/app/features/category/presentation/widget/category_widget.dart';
 import 'package:flip_coin/app/features/home/presentation/widgets/search_bar_header.dart';
 import 'package:flip_coin/app/features/home/presentation/widgets/shop_by_store.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 class CategoryScreen extends StatefulWidget {
 

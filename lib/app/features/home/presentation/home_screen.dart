@@ -1,12 +1,10 @@
 import 'package:flip_coin/app/core/custom/message.dart';
 import 'package:flip_coin/app/core/custom/show_toast.dart';
-import 'package:flip_coin/app/core/custom/text.dart';
 import 'package:flip_coin/app/core/theme/app_palette.dart';
 import 'package:flip_coin/app/features/home/presentation/widgets/brand_widget.dart';
 import 'package:flip_coin/app/features/home/presentation/widgets/home_banner.dart';
 import 'package:flip_coin/app/features/home/presentation/widgets/product_widgets.dart';
 import 'package:flip_coin/app/features/home/presentation/widgets/search_bar_header.dart';
-import 'package:flip_coin/app/features/home/presentation/widgets/shop_by_store.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {

@@ -90,9 +90,9 @@ class SpeciExtraBtnDetails extends StatelessWidget {
 
 class ReviewWidget extends StatelessWidget {
   int? secPos;
-  int? widgetindex;
+  int? widgetIndex;
 
-  ReviewWidget({super.key, this.secPos, this.widgetindex});
+  ReviewWidget({super.key, this.secPos, this.widgetIndex});
 
   _reviewTitle(BuildContext context) {
     return Padding(

@@ -3,7 +3,6 @@ import 'package:flip_coin/app/core/custom/text.dart';
 import 'package:flip_coin/app/core/extensions/context_extension.dart';
 import 'package:flip_coin/app/core/theme/app_palette.dart';
 import 'package:flip_coin/app/features/category/presentation/all_categories.dart';
-import 'package:flip_coin/app/features/product_details/presentation/product_details.dart';
 import 'package:flip_coin/app/routes/navigation.dart';
 import 'package:flutter/material.dart';
 
