@@ -23,8 +23,8 @@ class AppPaletteLight {
   static const gradient1 = Color(0xFFFCF2C3);
   static const gradient2 = Color(0xFFF3CD5C);
 
-  // static const gradient2 = Color(0xFFF1C1E5);
-  // static const gradient1 = Color(0xFFA199ED);
+   static const gradient11 = Color(0xFFF1C1E5);
+   static const gradient = Color(0xFFA199ED);
   static const blueColor = Color(0xE80771FF);
 
   // Tertiary Color

@@ -37,32 +37,32 @@ class _BrandWidgetState extends State<BrandWidget> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                texts.brands,
-                textAlign: TextAlign.center,
-                style: context.themeData.textTheme.labelMedium?.copyWith(
-                  fontSize: 18,
-                  fontWeight: FontWeight.w600,
-                  overflow: TextOverflow.ellipsis,
-                ),
-              ),
-              Text(
-                texts.seeAll,
-                style: context.themeData.textTheme.bodyMedium?.copyWith(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w500,
-                  color: AppPaletteLight.primary,
-                ),
-              ),
-            ],
-          ),
-          const SizedBox(height: 12),
+          // Row(
+          //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          //   children: [
+          //     Text(
+          //       texts.brands,
+          //       textAlign: TextAlign.center,
+          //       style: context.themeData.textTheme.labelMedium?.copyWith(
+          //         fontSize: 18,
+          //         fontWeight: FontWeight.w600,
+          //         overflow: TextOverflow.ellipsis,
+          //       ),
+          //     ),
+          //     Text(
+          //       texts.seeAll,
+          //       style: context.themeData.textTheme.bodyMedium?.copyWith(
+          //         fontSize: 16,
+          //         fontWeight: FontWeight.w500,
+          //         color: AppPaletteLight.primary,
+          //       ),
+          //     ),
+          //   ],
+          // ),
+          // const SizedBox(height: 12),
           Center(
             child: SizedBox(
-                height: 150,
+                height: 120,
                 child: ListView.builder(
                   itemCount: imageUrls.length,
                   scrollDirection: Axis.horizontal,
@@ -86,20 +86,20 @@ class _BrandWidgetState extends State<BrandWidget> {
       child: Column(
         children: [
           Container(
-            height: 100,
-            width: 100,
+            height: 80,
+            width: 110,
             alignment: Alignment.centerLeft,
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20),
+              borderRadius: BorderRadius.circular(30),
               border: Border.all(color: AppPaletteLight.gray, width: 0.7),
               color: Colors.red.shade50,
             ),
             child: ClipRRect(
-                borderRadius: BorderRadius.circular(20),
+                borderRadius: BorderRadius.circular(30),
                 child: Image.asset(
                   asset,
-                  height: 100,
-                  width: 100,
+                  height: 80,
+                  width: 110,
                   fit: BoxFit.cover,
                 )),
           ),

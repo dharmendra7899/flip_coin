@@ -2,7 +2,9 @@ import 'package:flip_coin/app/core/custom/message.dart';
 import 'package:flip_coin/app/core/custom/show_toast.dart';
 import 'package:flip_coin/app/core/theme/app_palette.dart';
 import 'package:flip_coin/app/features/home/presentation/widgets/brand_widget.dart';
+import 'package:flip_coin/app/features/home/presentation/widgets/deal_widget.dart';
 import 'package:flip_coin/app/features/home/presentation/widgets/home_banner.dart';
+import 'package:flip_coin/app/features/home/presentation/widgets/kadak_widget.dart';
 import 'package:flip_coin/app/features/home/presentation/widgets/product_widgets.dart';
 import 'package:flip_coin/app/features/home/presentation/widgets/search_bar_header.dart';
 import 'package:flutter/material.dart';
@@ -69,47 +71,64 @@ class _HomeScreenState extends State<HomeScreen> {
                 pinned: false,
                 delegate: SearchBarHeaderDelegate(),
               ),
-              SliverToBoxAdapter(
+              const SliverToBoxAdapter(
                 child: Column(
                   children: [
-                    const SizedBox(height: 8,),
-                    const CustomSlider(),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    const BrandWidget(),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    const ProductList(
-                      sectionTitle: 'Welcome Offer',
-                    ),
-                    const SizedBox(
+                    SizedBox(
                       height: 8,
                     ),
-                    const CustomSlider(
-                      height: 80,
+                    KadakWidget(
+                      title: 'Kadake ki BACHAT',
                     ),
-                    const SizedBox(
+                    SizedBox(
                       height: 20,
                     ),
-                    const ProductList(
-                      sectionTitle: 'Monthly Big Saver',
-                    ),
-                    const SizedBox(
+                    CustomSlider(height: 160,),
+                    SizedBox(
                       height: 20,
                     ),
-                    const ProductList(
-                      sectionTitle: 'New Picks For You',
-                    ),
-                    const SizedBox(
-                      height: 8,
-                    ),
-                    const CustomSlider(
-                      height: 120,
+                    BrandWidget(),
+                    SizedBox(
+                      height: 20,
                     ),
 
-                    const SizedBox(
+                    ProductList(
+                      sectionTitle: 'Welcome Offer',
+                      isTitle: true,
+                      color2: AppPaletteLight.gradient11,
+                      color1: AppPaletteLight.secondary1,
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    CustomSlider(height: 50,),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    DealWidget(
+                      title: 'NEVER BEFORE DEALS',
+                    ),
+
+
+                    SizedBox(
+                      height: 20,
+                    ),
+                    ProductList(
+                      sectionTitle: 'Monthly Big Saver',
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    ProductList(
+                      sectionTitle: 'New Picks Fr you',
+                    ),
+                    SizedBox(
+                      height: 8,
+                    ),
+                    CustomSlider(
+                      height: 120,
+                    ),
+                    SizedBox(
                       height: 10,
                     ),
                   ],
@@ -119,8 +138,6 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ),
       ),
-
-
     );
   }
 }

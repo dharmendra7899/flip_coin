@@ -1,44 +1,32 @@
 import 'package:flip_coin/app/core/assets/constant_images.dart';
-import 'package:flip_coin/app/core/custom/text.dart';
 import 'package:flip_coin/app/core/extensions/context_extension.dart';
 import 'package:flip_coin/app/core/theme/app_palette.dart';
 import 'package:flip_coin/app/features/product_details/presentation/product_details.dart';
 import 'package:flutter/material.dart';
 
-class ProductList extends StatelessWidget {
-  final String sectionTitle;
-  final bool? seeAll;
-  final Color? color1;
-  final Color? color2;
-  final bool? isTitle;
+class DealWidget extends StatelessWidget {
+  const DealWidget({super.key, required this.title});
 
-  const ProductList({
-    super.key,
-    required this.sectionTitle,
-    this.seeAll = true,
-    this.color1,
-    this.color2,
-    this.isTitle =false,
-  });
+  final String title;
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        isTitle==true? Row(
+        Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(
               alignment: Alignment.center,
               decoration: BoxDecoration(
-                  color: color1,
+                  color: Colors.blue.shade50,
                   borderRadius: const BorderRadius.only(
                       topRight: Radius.circular(30),
                       topLeft: Radius.circular(30))),
               child: Padding(
                 padding:
-                const EdgeInsets.symmetric(horizontal: 25.0, vertical: 5),
-                child: Text(sectionTitle,
+                    const EdgeInsets.symmetric(horizontal: 25.0, vertical: 5),
+                child: Text(title,
                     style: context.themeData.textTheme.labelLarge?.copyWith(
                         fontWeight: FontWeight.w600,
                         fontSize: 18,
@@ -47,64 +35,21 @@ class ProductList extends StatelessWidget {
               ),
             ),
           ],
-        ):const SizedBox(),
+        ),
         Container(
+          padding: const EdgeInsets.symmetric(horizontal: 12,vertical: 12),
+          alignment: Alignment.center,
           decoration: BoxDecoration(
-            gradient: LinearGradient(
-                colors: [
-                  color1 ?? AppPaletteLight.background,
-                  color2 ?? AppPaletteLight.background,
-                ],
-                begin: FractionalOffset.topCenter,
-                end: FractionalOffset.bottomCenter,
-                tileMode: TileMode.repeated),
+            color: Colors.blue.shade50,
           ),
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 12),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                isTitle == false
-                    ? Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            sectionTitle,
-                            style: context.themeData.textTheme.bodyMedium?.copyWith(
-                                fontSize: 18,
-                                fontWeight: FontWeight.w600,
-                                overflow: TextOverflow.ellipsis),
-                          ),
-                          seeAll == true
-                              ? Text(
-                                  texts.seeAll,
-                                  style: context.themeData.textTheme.bodyMedium
-                                      ?.copyWith(
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.w500,
-                                    color: AppPaletteLight.primary,
-                                  ),
-                                )
-                              : const SizedBox(),
-                        ],
-                      )
-                    : const SizedBox(),
-                isTitle == false
-                    ? const SizedBox(
-                        height: 10,
-                      )
-                    : const SizedBox(),
-                SizedBox(
-                  height: 240,
-                  child: ListView.builder(
-                    scrollDirection: Axis.horizontal,
-                    itemCount: 10,
-                    itemBuilder: (context, index) {
-                      return _buildCategoryItem(context);
-                    },
-                  ),
-                ),
-              ],
+          child: SizedBox(
+            height: 250,
+            child: ListView.builder(
+              scrollDirection: Axis.horizontal,
+              itemCount: 10,
+              itemBuilder: (context, index) {
+                return _buildCategoryItem(context);
+              },
             ),
           ),
         ),
@@ -188,8 +133,7 @@ class ProductList extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
+                      Column(crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
                             "3Kg",

@@ -32,6 +32,8 @@ class ProductDetails extends StatefulWidget {
 
 class _ProductDetailsState extends State<ProductDetails>
     with TickerProviderStateMixin {
+
+  bool fromTag = true;
   late final AnimationController buttonAnimationController =
       AnimationController(
           vsync: this, duration: const Duration(milliseconds: 300));
@@ -91,7 +93,6 @@ class _ProductDetailsState extends State<ProductDetails>
     }
   }
 
-
   @override
   void initState() {
     super.initState();
@@ -99,7 +100,6 @@ class _ProductDetailsState extends State<ProductDetails>
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       key: _scaffoldKey,
       body: Column(
@@ -119,7 +119,8 @@ class _ProductDetailsState extends State<ProductDetails>
                           Container(
                             color: AppPaletteLight.background,
                             child: Padding(
-                              padding: const EdgeInsets.symmetric(horizontal: 8.0,vertical: 8),
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 8.0, vertical: 8),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 mainAxisSize: MainAxisSize.min,
@@ -130,19 +131,22 @@ class _ProductDetailsState extends State<ProductDetails>
                                           ?.copyWith(
                                               fontSize: 16,
                                               fontWeight: FontWeight.w600,
-                                              color: AppPaletteLight.textColor)),
+                                              color:
+                                                  AppPaletteLight.textColor)),
                                   Text("Chicken Biryani test demo user",
                                       style: context
                                           .themeData.textTheme.bodyMedium
                                           ?.copyWith(
                                               fontSize: 16,
                                               fontWeight: FontWeight.w400,
-                                              color: AppPaletteLight.textColor)),
+                                              color:
+                                                  AppPaletteLight.textColor)),
                                   Text(
                                     "₹299",
                                     textAlign: TextAlign.start,
                                     maxLines: 1,
-                                    style: context.themeData.textTheme.bodyMedium
+                                    style: context
+                                        .themeData.textTheme.bodyMedium
                                         ?.copyWith(
                                       fontSize: 14,
                                       fontWeight: FontWeight.w600,
@@ -152,7 +156,8 @@ class _ProductDetailsState extends State<ProductDetails>
                                     "MRP 349",
                                     textAlign: TextAlign.start,
                                     maxLines: 1,
-                                    style: context.themeData.textTheme.bodyMedium
+                                    style: context
+                                        .themeData.textTheme.bodyMedium
                                         ?.copyWith(
                                       fontSize: 13,
                                       color: AppPaletteLight.gray,
@@ -171,7 +176,6 @@ class _ProductDetailsState extends State<ProductDetails>
                                       fontWeight: FontWeight.w500,
                                     ),
                                   ),
-
                                 ],
                               ),
                             ),
@@ -184,12 +188,12 @@ class _ProductDetailsState extends State<ProductDetails>
                             height: 5,
                           ),
                           const Divider(),
-                         // const SpeciExtraBtnDetails(),
-                         //  ReviewWidget(
-                         //    secPos: 1,
-                         //    widgetindex: widget.index,
-                         //  ),
-                        //  const Divider(),
+                          // const SpeciExtraBtnDetails(),
+                          //  ReviewWidget(
+                          //    secPos: 1,
+                          //    widgetindex: widget.index,
+                          //  ),
+                          //  const Divider(),
                           ProductList(sectionTitle: texts.moreProduct),
                           ProductList(sectionTitle: texts.lookingFor),
                         ],
@@ -261,25 +265,25 @@ class _ProductDetailsState extends State<ProductDetails>
           ),
         ),
         Container(
-          margin: const EdgeInsets.all(6),
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(
-                7,
-              ),
-              color: AppPaletteLight.background),
-          width: 33,
-          height: 33,
-          alignment: Alignment.center,
-          child: Stack(
-            children: [
-              Center(
-                child: SvgPicture.asset(
-                  DesignConfiguration.setSvgPath('appbarCart'),
-                  colorFilter: const ColorFilter.mode(
-                      AppPaletteLight.primary, BlendMode.srcIn),
+            margin: const EdgeInsets.all(6),
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(
+                  7,
                 ),
-              ),
-             /* false
+                color: AppPaletteLight.background),
+            width: 33,
+            height: 33,
+            alignment: Alignment.center,
+            child: Stack(
+              children: [
+                Center(
+                  child: SvgPicture.asset(
+                    DesignConfiguration.setSvgPath('appbarCart'),
+                    colorFilter: const ColorFilter.mode(
+                        AppPaletteLight.primary, BlendMode.srcIn),
+                  ),
+                ),
+                /* false
                   ? Positioned(
                 bottom: 5,
                 right: 5,
@@ -304,25 +308,23 @@ class _ProductDetailsState extends State<ProductDetails>
                 ),
               )
                   : const SizedBox()*/
-            ],
-          )
-        ),
+              ],
+            )),
         Container(
-          margin: const EdgeInsets.all(6),
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(
-                7,
-              ),
-              color: AppPaletteLight.background),
-          width: 33,
-          height: 33,
-          alignment: Alignment.center,
-          child: const Icon(
-            Icons.favorite_border,
-            size: 20.0,
-            color: AppPaletteLight.primary,
-          )
-        ),
+            margin: const EdgeInsets.all(6),
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(
+                  7,
+                ),
+                color: AppPaletteLight.background),
+            width: 33,
+            height: 33,
+            alignment: Alignment.center,
+            child: const Icon(
+              Icons.favorite_border,
+              size: 20.0,
+              color: AppPaletteLight.primary,
+            )),
       ],
       flexibleSpace: FlexibleSpaceBar(
         background: _slider(),
@@ -352,7 +354,7 @@ class _ProductDetailsState extends State<ProductDetails>
           child: Stack(
             children: <Widget>[
               Hero(
-                tag: '$texts.heroTagUniqueString${widget.index}2',
+                tag: '$fromTag${widget.index}2',
                 child: PageView.builder(
                   itemCount: sliderList.length,
                   scrollDirection: Axis.horizontal,
